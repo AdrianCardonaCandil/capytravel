@@ -1,0 +1,15 @@
+# Parquet Files
+*.parquet
+
+# PMTiles Files
+*.pmtiles
+
+# MacOS
+.DS_Store
+
+# Agents
+.agents
+skills-lock.json
+
+# Documentation
+docs
