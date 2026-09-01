@@ -1,0 +1,1195 @@
+{
+    "version": 8,
+    "name": "bright",
+    "metadata": {
+        "root:author": "Adrian Cardona Candil",
+        "root:description": "Test stylesheet for a bright theme map display"
+    },
+    "glyphs": "http://localhost:3000/font/{fontstack}/{range}",
+    "center": [
+        0,
+        0
+    ],
+    "zoom": 2.5,
+    "sources": {
+        "base": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/base/{z}/{x}/{y}"
+            ],
+            "maxzoom": 13
+        },
+        "buildings": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/buildings/{z}/{x}/{y}"
+            ]
+        },
+        "divisions": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/divisions/{z}/{x}/{y}"
+            ]
+        },
+        "transportation": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/transportation/{z}/{x}/{y}"
+            ]
+        }
+    },
+    "layers": [
+        {
+            "id": "water-ocean-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "ocean"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(200, 88%, 72%)",
+                "fill-opacity": 1,
+                "fill-outline-color": "transparent"
+            }
+        },
+        {
+            "id": "bathymetry-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "bathymetry",
+            "filter": [
+                "==",
+                [
+                    "geometry-type"
+                ],
+                "Polygon"
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "-",
+                    [
+                        "coalesce",
+                        [
+                            "get",
+                            "depth"
+                        ],
+                        0
+                    ]
+                ]
+            },
+            "paint": {
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "depth"
+                    ],
+                    [
+                        0,
+                        10,
+                        20,
+                        30,
+                        40,
+                        50,
+                        60,
+                        70,
+                        80,
+                        90
+                    ],
+                    "hsl(200, 98%, 82%)",
+                    100,
+                    "hsl(200, 97%, 81%)",
+                    500,
+                    "hsl(200, 96%, 80%)",
+                    1000,
+                    "hsl(200, 95%, 79%)",
+                    1500,
+                    "hsl(200, 94%, 78%)",
+                    2000,
+                    "hsl(200, 92%, 76%)",
+                    2500,
+                    "hsl(200, 91%, 75%)",
+                    3000,
+                    "hsl(200, 90%, 74%)",
+                    "transparent"
+                ],
+                "fill-opacity": 1,
+                "fill-outline-color": "transparent"
+            }
+        },
+        {
+            "id": "land-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "any",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "land"
+                    ],
+                    [
+                        "!",
+                        [
+                            "has",
+                            "subtype"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(31, 34%, 95.8%)",
+                "fill-outline-color": "transparent"
+            }
+        },
+        {
+            "id": "land-use-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "agriculture",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "farmyard",
+                                "meadow",
+                                "farmland"
+                            ]
+                        ]
+                    ],
+                    "campground",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "camp_site"
+                    ],
+                    "cemetery",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "cemetery",
+                                "graveyard"
+                            ]
+                        ]
+                    ],
+                    "education",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "college",
+                                "university"
+                            ]
+                        ]
+                    ],
+                    "entertainment",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "water_park",
+                                "zoo",
+                                "theme_park"
+                            ]
+                        ]
+                    ],
+                    "golf",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "golf_course",
+                                "fairway",
+                                "rough"
+                            ]
+                        ]
+                    ],
+                    "horticulture",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "orchard",
+                                "garden",
+                                "flowerbed",
+                                "vineyard"
+                            ]
+                        ]
+                    ],
+                    "medical",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "hospital"
+                    ],
+                    "military",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "military",
+                                "base",
+                                "naval_base"
+                            ]
+                        ]
+                    ],
+                    "park",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "park",
+                                "dog_park",
+                                "village_green"
+                            ]
+                        ]
+                    ],
+                    "protected",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "nature_reserve",
+                                "national_park",
+                                "protected_landscape_seascape"
+                            ]
+                        ]
+                    ],
+                    "recreation",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "pitch",
+                                "recreation_ground",
+                                "playground",
+                                "track"
+                            ]
+                        ]
+                    ],
+                    false
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "protected",
+                    1,
+                    "agriculture",
+                    2,
+                    "park",
+                    3,
+                    "golf",
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "golf_course",
+                        4,
+                        "rough",
+                        5,
+                        6
+                    ],
+                    "campground",
+                    7,
+                    "horticulture",
+                    8,
+                    "military",
+                    9,
+                    "recreation",
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "recreation_ground",
+                        10,
+                        11
+                    ],
+                    "entertainment",
+                    12,
+                    "education",
+                    13,
+                    "medical",
+                    14,
+                    "cemetery",
+                    15,
+                    0
+                ]
+            },
+            "paint": {
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "protected",
+                        "park"
+                    ],
+                    "hsl(118, 38%, 88%)",
+                    [
+                        "agriculture",
+                        "cemetery"
+                    ],
+                    "hsl(75, 28%, 92%)",
+                    "golf",
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "golf_course",
+                        "hsl(118, 38%, 88%)",
+                        "hsl(118, 38%, 93%)"
+                    ],
+                    [
+                        "campground",
+                        "horticulture",
+                        "recreation"
+                    ],
+                    "hsl(118, 38%, 93%)",
+                    "military",
+                    "hsl(213, 10%, 97%)",
+                    [
+                        "education",
+                        "entertainment"
+                    ],
+                    "hsl(48, 42%, 93%)",
+                    "medical",
+                    "hsl(0, 38%, 95%)",
+                    "transparent"
+                ],
+                "fill-outline-color": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "protected",
+                        "park"
+                    ],
+                    "hsl(118, 38%, 86%)",
+                    [
+                        "agriculture",
+                        "cemetery"
+                    ],
+                    "hsl(75, 28%, 90%)",
+                    "golf",
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "golf_course",
+                        "hsl(118, 38%, 86%)",
+                        "hsl(118, 38%, 91%)"
+                    ],
+                    [
+                        "campground",
+                        "horticulture",
+                        "recreation"
+                    ],
+                    "hsl(118, 38%, 91%)",
+                    "military",
+                    "hsl(213, 19%, 96%)",
+                    [
+                        "education",
+                        "entertainment"
+                    ],
+                    "hsl(48, 42%, 91%)",
+                    "medical",
+                    "hsl(0, 38%, 94%)",
+                    "transparent"
+                ]
+            }
+        },
+        {
+            "id": "land-cover-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_cover",
+            "maxzoom": 13,
+            "filter": [
+                "==",
+                [
+                    "geometry-type"
+                ],
+                "Polygon"
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "forest",
+                    1,
+                    "barren",
+                    2,
+                    "shrub",
+                    3,
+                    "grass",
+                    4,
+                    "crop",
+                    5,
+                    "wetland",
+                    6,
+                    "mangrove",
+                    7,
+                    "moss",
+                    8,
+                    "snow",
+                    9,
+                    0
+                ]
+            },
+            "paint": {
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "barren",
+                    "hsl(48, 52%, 87%)",
+                    "crop",
+                    "hsl(62, 62%, 81%)",
+                    "forest",
+                    "hsl(122, 52%, 76%)",
+                    "grass",
+                    "hsl(95, 60%, 79%)",
+                    "mangrove",
+                    "hsl(162, 54%, 76%)",
+                    "moss",
+                    "hsl(138, 48%, 72%)",
+                    "shrub",
+                    "hsl(78, 58%, 80%)",
+                    "snow",
+                    "hsl(210, 22%, 96%)",
+                    "wetland",
+                    "hsl(178, 56%, 80%)",
+                    "transparent"
+                ],
+                "fill-opacity": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    0,
+                    1,
+                    6,
+                    1,
+                    11,
+                    0.2,
+                    13,
+                    0
+                ],
+                "fill-outline-color": "transparent"
+            }
+        },
+        {
+            "id": "water-continent-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "!",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "ocean",
+                                "physical"
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    2,
+                    1
+                ]
+            },
+            "paint": {
+                "fill-color": "hsl(200, 98%, 83%)",
+                "fill-opacity": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    0.25,
+                    1
+                ],
+                "fill-outline-color": "transparent"
+            }
+        },
+        {
+            "id": "water-continent-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "has",
+                    "subtype"
+                ]
+            ],
+            "layout": {
+                "line-sort-key": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    2,
+                    1
+                ],
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(200, 98%, 83%)",
+                "line-width": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        false
+                    ],
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "river",
+                        1,
+                        0.5
+                    ],
+                    1
+                ],
+                "line-opacity": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    0.25,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "international_airport",
+                                "military_airport",
+                                "municipal_airport",
+                                "private_airport",
+                                "regional_airport",
+                                "airport",
+                                "runway",
+                                "taxiway"
+                            ]
+                        ]
+                    ],
+                    "bridge",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "bridge",
+                                "viaduct",
+                                "aqueduct"
+                            ]
+                        ]
+                    ],
+                    "pier",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "pier"
+                    ],
+                    "quay",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "quay"
+                    ],
+                    "tower",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "bell_tower",
+                                "defensive",
+                                "minaret",
+                                "observation",
+                                "watchtower"
+                            ]
+                        ]
+                    ],
+                    "transit",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "bus_station",
+                                "ferry_terminal",
+                                "railway_station",
+                                "subway_station"
+                            ]
+                        ]
+                    ],
+                    "water",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "dam",
+                                "fountain",
+                                "weir"
+                            ]
+                        ]
+                    ],
+                    false
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport",
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "runway",
+                            "taxiway"
+                        ],
+                        2,
+                        1
+                    ],
+                    "water",
+                    3,
+                    "quay",
+                    4,
+                    "pier",
+                    5,
+                    "transit",
+                    6,
+                    "bridge",
+                    7,
+                    "tower",
+                    9,
+                    0
+                ]
+            },
+            "paint": {
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "airport",
+                        "transit"
+                    ],
+                    "hsl(220, 42%, 92%)",
+                    [
+                        "water",
+                        "quay",
+                        "pier"
+                    ],
+                    "hsl(31, 34%, 93%)",
+                    [
+                        "bridge",
+                        "tower"
+                    ],
+                    "hsl(0, 38%, 95%)",
+                    "transparent"
+                ],
+                "fill-outline-color": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport",
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "runway",
+                            "taxiway"
+                        ],
+                        "hsl(220, 42%, 88%)",
+                        "hsl(220, 42%, 90%)"
+                    ],
+                    "transit",
+                    "hsl(220, 42%, 90%)",
+                    [
+                        "water",
+                        "quay",
+                        "pier"
+                    ],
+                    "hsl(31, 34%, 92%)",
+                    [
+                        "bridge",
+                        "tower"
+                    ],
+                    "hsl(0, 38%, 94%)",
+                    "transparent"
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "runway",
+                                "taxiway"
+                            ]
+                        ]
+                    ],
+                    "bridge",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "bridge",
+                                "viaduct",
+                                "aqueduct"
+                            ]
+                        ]
+                    ],
+                    "pier",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "pier"
+                    ],
+                    "quay",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "quay"
+                    ],
+                    "recreation",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "roller_coaster"
+                    ],
+                    "water",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "dam",
+                                "fountain",
+                                "weir"
+                            ]
+                        ]
+                    ],
+                    false
+                ]
+            ],
+            "layout": {
+                "line-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport",
+                    1,
+                    "water",
+                    2,
+                    "quay",
+                    3,
+                    "pier",
+                    4,
+                    "bridge",
+                    5,
+                    "recreation",
+                    6,
+                    0
+                ],
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport",
+                    " hsl(220, 42%, 88%)",
+                    [
+                        "water",
+                        "quay",
+                        "pier"
+                    ],
+                    "hsl(31, 34%, 93%)",
+                    "bridge",
+                    "hsl(0, 38%, 95%)",
+                    "recreation",
+                    "hsl(48, 42%, 91%)",
+                    "transparent"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.75,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "water-continent-label",
+            "type": "symbol",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "has",
+                    "subtype"
+                ],
+                [
+                    "!",
+                    [
+                        "has",
+                        "is_intermittent"
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Italic",
+                    "Noto Sans Italic"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    10,
+                    13.5,
+                    14,
+                    16.5
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": 500,
+                "text-max-angle": 25
+            },
+            "paint": {
+                "text-color": "hsl(194, 85%, 34%)"
+            }
+        }
+    ]
+}

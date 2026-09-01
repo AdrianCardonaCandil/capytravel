@@ -1,0 +1,16 @@
+{
+    "id": "water-ocean-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "water",
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "Polygon"],
+        ["==", ["get", "subtype"], "ocean"]
+    ],
+    "paint": {
+        "fill-color": "hsl(200, 88%, 72%)",
+        "fill-opacity": 1,
+        "fill-outline-color": "transparent"
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "id": "infrastructure-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "Polygon"],
+        [
+            "match",
+            ["get", "subtype"],
+            "airport", ["in", ["get", "class"], ["literal", ["international_airport", "military_airport", "municipal_airport", "private_airport", "regional_airport", "airport", "runway", "taxiway"]]],
+            "bridge", ["in", ["get", "class"], ["literal", ["bridge", "viaduct", "aqueduct"]]],
+            "pier", ["==", ["get", "class"], "pier"],
+            "quay", ["==", ["get", "class"], "quay"],
+            "tower", ["in", ["get", "class"], ["literal", ["bell_tower", "defensive", "minaret", "observation", "watchtower"]]],
+            "transit", ["in", ["get", "class"], ["literal", ["bus_station", "ferry_terminal", "railway_station", "subway_station"]]],
+            "water", ["in", ["get", "class"], ["literal", ["dam", "fountain", "weir"]]],
+            false
+        ]
+    ],
+    "layout": {
+        "fill-sort-key": [
+            "match",
+            ["get", "subtype"],
+            "airport", ["match", ["get", "class"], ["runway", "taxiway"], 2, 1],
+            "water", 3,
+            "quay", 4,
+            "pier", 5,
+            "transit", 6,
+            "bridge", 7,
+            "tower", 9,
+            0
+        ]
+    },
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "subtype"],
+            ["airport", "transit"], "hsl(220, 42%, 92%)",
+            ["water", "quay", "pier"], "hsl(31, 34%, 93%)",
+            ["bridge", "tower"], "hsl(0, 38%, 95%)",
+            "transparent"
+        ],
+        "fill-outline-color": [
+            "match",
+            ["get", "subtype"],
+            "airport", ["match", ["get", "class"], ["runway", "taxiway"], "hsl(220, 42%, 88%)", "hsl(220, 42%, 90%)"],
+            "transit", "hsl(220, 42%, 90%)",
+            ["water", "quay", "pier"], "hsl(31, 34%, 92%)",
+            ["bridge", "tower"], "hsl(0, 38%, 94%)",
+            "transparent"
+        ]
+    }
+}

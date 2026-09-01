@@ -1,0 +1,27 @@
+{
+    "id": "bathymetry-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "bathymetry",
+    "filter": ["==", ["geometry-type"], "Polygon"],
+    "layout": {
+        "fill-sort-key": ["-", ["coalesce", ["get", "depth"], 0]]
+    },
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "depth"],
+            [0, 10, 20, 30, 40, 50, 60, 70, 80, 90], "hsl(200, 98%, 82%)",
+            100, "hsl(200, 97%, 81%)",
+            500, "hsl(200, 96%, 80%)",
+            1000, "hsl(200, 95%, 79%)",
+            1500, "hsl(200, 94%, 78%)",
+            2000, "hsl(200, 92%, 76%)",
+            2500, "hsl(200, 91%, 75%)",
+            3000, "hsl(200, 90%, 74%)",
+            "transparent"
+        ],
+        "fill-opacity": 1,
+        "fill-outline-color": "transparent"
+    }
+}

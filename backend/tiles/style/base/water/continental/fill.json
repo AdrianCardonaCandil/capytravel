@@ -1,0 +1,29 @@
+{
+    "id": "water-continent-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "water",
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "Polygon"],
+        ["!", ["in", ["get", "subtype"], ["literal", ["ocean", "physical"]]]]
+    ],
+    "layout": {
+        "fill-sort-key": [
+            "case",
+            ["==", ["get", "is_intermittent"], true],
+            2,
+            1
+        ]
+    },
+    "paint": {
+        "fill-color": "hsl(200, 98%, 83%)",
+        "fill-opacity": [
+            "case",
+            ["==", ["get", "is_intermittent"], true],
+            0.25,
+            1
+        ],
+        "fill-outline-color": "transparent"
+    }
+}

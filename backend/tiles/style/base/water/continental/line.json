@@ -1,0 +1,42 @@
+{
+    "id": "water-continent-line",
+    "type": "line",
+    "source": "base",
+    "source-layer": "water",
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "LineString"],
+        ["has", "subtype"]
+    ],
+    "layout": {
+        "line-sort-key": [
+            "case",
+            ["==", ["get", "is_intermittent"], true],
+            2,
+            1
+        ],
+        "line-cap": "round",
+        "line-join": "round"
+    },
+    "paint": {
+        "line-color": "hsl(200, 98%, 83%)",
+        "line-width": [
+            "case",
+            ["==", ["get", "is_intermittent"], false],
+            [
+                "match",
+                ["get", "class"],
+                "river",
+                1,
+                0.5
+            ],
+            1
+        ],
+        "line-opacity": [
+            "case",
+            ["==", ["get", "is_intermittent"], true],
+            0.25,
+            1
+        ]
+    }
+}

@@ -85,7 +85,7 @@ copy (
                 lambda x: x is not null and x != getvariable('country_code')
             )
         ) > 0
-) to '../parquet_extract/place.parquet';
+) to '../parquet/extract/place.parquet';
 
 copy (
     select
@@ -102,7 +102,7 @@ copy (
     )
     where
         country = getvariable('country_code')
-) to '../parquet_extract/address.parquet';
+) to '../parquet/extract/address.parquet';
 
 copy (
     select
@@ -127,20 +127,7 @@ copy (
             getvariable('boundary'), geometry
         )
         and names.primary is not null
-        and class in (
-            'airport',
-            'municipal_airport',
-            'regional_airport',
-            'international_airport',
-            'military_airport',
-            'private_airport',
-            'seaplane_airport',
-            'railway_station',
-            'bus_station',
-            'subway_station',
-            'ferry_terminal',
-        )
-) to '../parquet_extract/infrastructure.parquet';
+) to '../parquet/extract/infrastructure.parquet';
 
 copy (
     select
@@ -178,7 +165,7 @@ copy (
     )
     where
         country = getvariable('country_code')
-) to '../parquet_extract/division.parquet';
+) to '../parquet/extract/division.parquet';
 
 copy (
     select
@@ -197,4 +184,4 @@ copy (
     )
     where
         country = getvariable('country_code')
-) to '../parquet_extract/division_area.parquet';
+) to '../parquet/extract/division_area.parquet';

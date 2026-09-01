@@ -4,6 +4,9 @@
 # PMTiles Files
 *.pmtiles
 
+# Font Files
+*.ttf
+
 # MacOS
 .DS_Store
 
