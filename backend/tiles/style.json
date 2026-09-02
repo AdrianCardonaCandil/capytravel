@@ -10,6 +10,9 @@
         0,
         0
     ],
+    "projection": {
+        "type": "globe"
+    },
     "zoom": 2.5,
     "sources": {
         "base": {
@@ -747,6 +750,62 @@
             }
         },
         {
+            "id": "water-continent-label",
+            "type": "symbol",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "has",
+                    "subtype"
+                ],
+                [
+                    "!",
+                    [
+                        "has",
+                        "is_intermittent"
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Italic",
+                    "Noto Sans Italic"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    10,
+                    13.5,
+                    14,
+                    16.5
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": 500,
+                "text-max-angle": 25
+            },
+            "paint": {
+                "text-color": "hsl(194, 85%, 34%)"
+            }
+        },
+        {
             "id": "infrastructure-fill",
             "type": "fill",
             "source": "base",
@@ -1133,62 +1192,6 @@
                     20,
                     5
                 ]
-            }
-        },
-        {
-            "id": "water-continent-label",
-            "type": "symbol",
-            "source": "base",
-            "source-layer": "water",
-            "filter": [
-                "all",
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "LineString"
-                ],
-                [
-                    "has",
-                    "subtype"
-                ],
-                [
-                    "!",
-                    [
-                        "has",
-                        "is_intermittent"
-                    ]
-                ]
-            ],
-            "layout": {
-                "text-field": [
-                    "get",
-                    "@name"
-                ],
-                "text-font": [
-                    "Nunito Italic",
-                    "Noto Sans Italic"
-                ],
-                "text-size": [
-                    "interpolate",
-                    [
-                        "linear"
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    10,
-                    13.5,
-                    14,
-                    16.5
-                ],
-                "symbol-placement": "line",
-                "symbol-spacing": 500,
-                "text-max-angle": 25
-            },
-            "paint": {
-                "text-color": "hsl(194, 85%, 34%)"
             }
         }
     ]

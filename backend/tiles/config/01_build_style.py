@@ -34,9 +34,9 @@ manifest = [
     'base/land-cover/fill.json',
     'base/water/continental/fill.json',
     'base/water/continental/line.json',
+    'base/water/continental/label.json',
     'base/infrastructure/fill.json',
     'base/infrastructure/line.json',
-    'base/water/continental/label.json',
 ]
 
 # Layers embedding
