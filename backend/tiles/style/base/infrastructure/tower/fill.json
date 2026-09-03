@@ -1,0 +1,30 @@
+{
+    "id": "infrastructure-tower-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "Polygon"],
+        ["==", ["get", "subtype"], "tower"],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                [
+                    "bell_tower",
+                    "defensive",
+                    "minaret",
+                    "observation",
+                    "watchtower"
+                ]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(0, 38%, 95%)",
+        "fill-outline-color": "hsl(0, 38%, 94%)"
+    }
+}

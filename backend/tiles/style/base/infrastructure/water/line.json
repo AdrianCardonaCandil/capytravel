@@ -1,0 +1,32 @@
+{
+    "id": "infrastructure-water-line",
+    "type": "line",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "LineString"],
+        ["==", ["get", "subtype"], "water"],
+        [
+            "in",
+            ["get", "class"],
+            ["literal", ["dam", "fountain", "weir"]]
+        ]
+    ],
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+    },
+    "paint": {
+        "line-color": "hsl(31, 34%, 93%)",
+        "line-width": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            12, 0.75,
+            16, 2.5,
+            20, 5
+        ]
+    }
+}

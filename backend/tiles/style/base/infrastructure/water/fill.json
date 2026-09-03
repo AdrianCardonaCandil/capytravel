@@ -1,0 +1,21 @@
+{
+    "id": "infrastructure-water-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "Polygon"],
+        ["==", ["get", "subtype"], "water"],
+        [
+            "in",
+            ["get", "class"],
+            ["literal", ["dam", "fountain", "weir"]]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(31, 34%, 93%)",
+        "fill-outline-color": "hsl(31, 34%, 92%)"
+    }
+}

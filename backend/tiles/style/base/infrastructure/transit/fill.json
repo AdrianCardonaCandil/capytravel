@@ -1,0 +1,29 @@
+{
+    "id": "infrastructure-transit-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "Polygon"],
+        ["==", ["get", "subtype"], "transit"],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                [
+                    "bus_station",
+                    "ferry_terminal",
+                    "railway_station",
+                    "subway_station"
+                ]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(220, 42%, 92%)",
+        "fill-outline-color": "hsl(220, 42%, 90%)"
+    }
+}

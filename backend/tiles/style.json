@@ -38,7 +38,8 @@
             "type": "vector",
             "tiles": [
                 "http://localhost:3000/transportation/{z}/{x}/{y}"
-            ]
+            ],
+            "maxzoom": 14
         }
     },
     "layers": [
@@ -806,7 +807,7 @@
             }
         },
         {
-            "id": "infrastructure-fill",
+            "id": "infrastructure-airport-fill",
             "type": "fill",
             "source": "base",
             "source-layer": "infrastructure",
@@ -821,118 +822,32 @@
                     "Polygon"
                 ],
                 [
-                    "match",
+                    "==",
                     [
                         "get",
                         "subtype"
                     ],
-                    "airport",
+                    "airport"
+                ],
+                [
+                    "in",
                     [
-                        "in",
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
                         [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "international_airport",
-                                "military_airport",
-                                "municipal_airport",
-                                "private_airport",
-                                "regional_airport",
-                                "airport",
-                                "runway",
-                                "taxiway"
-                            ]
+                            "international_airport",
+                            "military_airport",
+                            "municipal_airport",
+                            "private_airport",
+                            "regional_airport",
+                            "airport",
+                            "runway",
+                            "taxiway"
                         ]
-                    ],
-                    "bridge",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "bridge",
-                                "viaduct",
-                                "aqueduct"
-                            ]
-                        ]
-                    ],
-                    "pier",
-                    [
-                        "==",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "pier"
-                    ],
-                    "quay",
-                    [
-                        "==",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "quay"
-                    ],
-                    "tower",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "bell_tower",
-                                "defensive",
-                                "minaret",
-                                "observation",
-                                "watchtower"
-                            ]
-                        ]
-                    ],
-                    "transit",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "bus_station",
-                                "ferry_terminal",
-                                "railway_station",
-                                "subway_station"
-                            ]
-                        ]
-                    ],
-                    "water",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "dam",
-                                "fountain",
-                                "weir"
-                            ]
-                        ]
-                    ],
-                    false
+                    ]
                 ]
             ],
             "layout": {
@@ -940,101 +855,35 @@
                     "match",
                     [
                         "get",
-                        "subtype"
+                        "class"
                     ],
-                    "airport",
                     [
-                        "match",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "runway",
-                            "taxiway"
-                        ],
-                        2,
-                        1
+                        "runway",
+                        "taxiway"
                     ],
-                    "water",
-                    3,
-                    "quay",
-                    4,
-                    "pier",
-                    5,
-                    "transit",
-                    6,
-                    "bridge",
-                    7,
-                    "tower",
-                    9,
-                    0
+                    2,
+                    1
                 ]
             },
             "paint": {
-                "fill-color": [
-                    "match",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    [
-                        "airport",
-                        "transit"
-                    ],
-                    "hsl(220, 42%, 92%)",
-                    [
-                        "water",
-                        "quay",
-                        "pier"
-                    ],
-                    "hsl(31, 34%, 93%)",
-                    [
-                        "bridge",
-                        "tower"
-                    ],
-                    "hsl(0, 38%, 95%)",
-                    "transparent"
-                ],
+                "fill-color": "hsl(220, 42%, 92%)",
                 "fill-outline-color": [
                     "match",
                     [
                         "get",
-                        "subtype"
+                        "class"
                     ],
-                    "airport",
                     [
-                        "match",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "runway",
-                            "taxiway"
-                        ],
-                        "hsl(220, 42%, 88%)",
-                        "hsl(220, 42%, 90%)"
+                        "runway",
+                        "taxiway"
                     ],
-                    "transit",
-                    "hsl(220, 42%, 90%)",
-                    [
-                        "water",
-                        "quay",
-                        "pier"
-                    ],
-                    "hsl(31, 34%, 92%)",
-                    [
-                        "bridge",
-                        "tower"
-                    ],
-                    "hsl(0, 38%, 94%)",
-                    "transparent"
+                    "hsl(220, 42%, 88%)",
+                    "hsl(220, 42%, 90%)"
                 ]
             }
         },
         {
-            "id": "infrastructure-line",
+            "id": "infrastructure-airport-line",
             "type": "line",
             "source": "base",
             "source-layer": "infrastructure",
@@ -1049,133 +898,34 @@
                     "LineString"
                 ],
                 [
-                    "match",
+                    "==",
                     [
                         "get",
                         "subtype"
                     ],
-                    "airport",
+                    "airport"
+                ],
+                [
+                    "in",
                     [
-                        "in",
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
                         [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "runway",
-                                "taxiway"
-                            ]
+                            "runway",
+                            "taxiway"
                         ]
-                    ],
-                    "bridge",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "bridge",
-                                "viaduct",
-                                "aqueduct"
-                            ]
-                        ]
-                    ],
-                    "pier",
-                    [
-                        "==",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "pier"
-                    ],
-                    "quay",
-                    [
-                        "==",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "quay"
-                    ],
-                    "recreation",
-                    [
-                        "==",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "roller_coaster"
-                    ],
-                    "water",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "dam",
-                                "fountain",
-                                "weir"
-                            ]
-                        ]
-                    ],
-                    false
+                    ]
                 ]
             ],
             "layout": {
-                "line-sort-key": [
-                    "match",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "airport",
-                    1,
-                    "water",
-                    2,
-                    "quay",
-                    3,
-                    "pier",
-                    4,
-                    "bridge",
-                    5,
-                    "recreation",
-                    6,
-                    0
-                ],
                 "line-cap": "round",
                 "line-join": "round"
             },
             "paint": {
-                "line-color": [
-                    "match",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "airport",
-                    " hsl(220, 42%, 88%)",
-                    [
-                        "water",
-                        "quay",
-                        "pier"
-                    ],
-                    "hsl(31, 34%, 93%)",
-                    "bridge",
-                    "hsl(0, 38%, 95%)",
-                    "recreation",
-                    "hsl(48, 42%, 91%)",
-                    "transparent"
-                ],
+                "line-color": "hsl(220, 42%, 88%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -1191,6 +941,1918 @@
                     2.5,
                     20,
                     5
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-water-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "water"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "dam",
+                            "fountain",
+                            "weir"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(31, 34%, 93%)",
+                "fill-outline-color": "hsl(31, 34%, 92%)"
+            }
+        },
+        {
+            "id": "infrastructure-water-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "water"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "dam",
+                            "fountain",
+                            "weir"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(31, 34%, 93%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.75,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-quay-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "quay"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "quay"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(31, 34%, 93%)",
+                "fill-outline-color": "hsl(31, 34%, 92%)"
+            }
+        },
+        {
+            "id": "infrastructure-quay-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "quay"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "quay"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(31, 34%, 93%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.75,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-pier-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "pier"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "pier"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(31, 34%, 93%)",
+                "fill-outline-color": "hsl(31, 34%, 92%)"
+            }
+        },
+        {
+            "id": "infrastructure-pier-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "pier"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "pier"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(31, 34%, 93%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.75,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-transit-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "transit"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "bus_station",
+                            "ferry_terminal",
+                            "railway_station",
+                            "subway_station"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(220, 42%, 92%)",
+                "fill-outline-color": "hsl(220, 42%, 90%)"
+            }
+        },
+        {
+            "id": "infrastructure-bridge-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "bridge"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "bridge",
+                            "viaduct",
+                            "aqueduct"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(0, 38%, 95%)",
+                "fill-outline-color": "hsl(0, 38%, 94%)"
+            }
+        },
+        {
+            "id": "infrastructure-bridge-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "bridge"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "bridge",
+                            "viaduct",
+                            "aqueduct"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 38%, 95%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.75,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-tower-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "tower"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "bell_tower",
+                            "defensive",
+                            "minaret",
+                            "observation",
+                            "watchtower"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(0, 38%, 95%)",
+                "fill-outline-color": "hsl(0, 38%, 94%)"
+            }
+        },
+        {
+            "id": "infrastructure-recreation-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "recreation"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "roller_coaster"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(48, 42%, 91%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.75,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "overview-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "maxzoom": 14,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(213, 19%, 91%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    0.3,
+                    13,
+                    0.8
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.25,
+                    10,
+                    1,
+                    13,
+                    2
+                ],
+                "line-opacity": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.7,
+                    10,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "overview-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "maxzoom": 14,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.25,
+                    10,
+                    1,
+                    13,
+                    2
+                ],
+                "line-opacity": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.7,
+                    10,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "road-pedestrian-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "pedestrian",
+                            "footway",
+                            "path",
+                            "track",
+                            "cycleway",
+                            "bridleway"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    18,
+                    "transparent"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.5,
+                    18,
+                    1,
+                    22,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0,
+                    18,
+                    6,
+                    22,
+                    80
+                ]
+            }
+        },
+        {
+            "id": "road-other-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "unclassified",
+                            "service",
+                            "unknown"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    12,
+                    "hsl(213, 19%, 91%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.5,
+                    18,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    16,
+                    2,
+                    20,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "road-living-street-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "living_street"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    14,
+                    "hsl(213, 19%, 91%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    0.2,
+                    14,
+                    0.6,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "road-residential-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "residential"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    14,
+                    "hsl(213, 19%, 91%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    14,
+                    0.8,
+                    16,
+                    3,
+                    20,
+                    6
+                ]
+            }
+        },
+        {
+            "id": "road-tertiary-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "tertiary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    14,
+                    "hsl(213, 19%, 91%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    0.2,
+                    12,
+                    1,
+                    16,
+                    4,
+                    20,
+                    8
+                ]
+            }
+        },
+        {
+            "id": "road-secondary-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "secondary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    12,
+                    "hsl(213, 19%, 91%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    9,
+                    0.3,
+                    12,
+                    1.5,
+                    16,
+                    5,
+                    20,
+                    10
+                ]
+            }
+        },
+        {
+            "id": "road-primary-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "primary"
+                ]
+            ],
+            "layout": {
+                "line-cap": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "butt",
+                    16,
+                    "round"
+                ],
+                "line-join": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "miter",
+                    16,
+                    "round"
+                ]
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    10,
+                    "hsl(213, 19%, 91%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    0.3,
+                    10,
+                    0.7,
+                    12,
+                    2,
+                    16,
+                    6,
+                    20,
+                    12
+                ]
+            }
+        },
+        {
+            "id": "road-steps-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "steps"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsla(0, 0%, 100%, 0.7)",
+                "line-dasharray": [
+                    0.5,
+                    0.25
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0,
+                    18,
+                    6,
+                    22,
+                    80
+                ]
+            }
+        },
+        {
+            "id": "road-pedestrian-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "pedestrian",
+                            "footway",
+                            "path",
+                            "track",
+                            "cycleway",
+                            "bridleway"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsla(0, 0%, 100%, 0.7)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0,
+                    18,
+                    6,
+                    22,
+                    80
+                ]
+            }
+        },
+        {
+            "id": "road-other-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "unclassified",
+                            "service",
+                            "unknown"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    16,
+                    2,
+                    20,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "road-living-street-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "living_street"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    0.2,
+                    14,
+                    0.6,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "road-residential-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "residential"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    14,
+                    0.8,
+                    16,
+                    3,
+                    20,
+                    6
+                ]
+            }
+        },
+        {
+            "id": "road-tertiary-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "tertiary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    0.2,
+                    12,
+                    1,
+                    16,
+                    4,
+                    20,
+                    8
+                ]
+            }
+        },
+        {
+            "id": "road-secondary-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "secondary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    9,
+                    0.3,
+                    12,
+                    1.5,
+                    16,
+                    5,
+                    20,
+                    10
+                ]
+            }
+        },
+        {
+            "id": "road-primary-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "primary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    0.3,
+                    10,
+                    0.7,
+                    12,
+                    2,
+                    16,
+                    6,
+                    20,
+                    12
+                ]
+            }
+        },
+        {
+            "id": "road-trunk-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "trunk"
+                ]
+            ],
+            "layout": {
+                "line-cap": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "butt",
+                    13,
+                    "round"
+                ],
+                "line-join": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "miter",
+                    13,
+                    "round"
+                ]
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    8,
+                    "hsl(213, 19%, 91%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    0.4,
+                    8,
+                    0.8,
+                    12,
+                    2.5,
+                    16,
+                    7,
+                    20,
+                    14
+                ]
+            }
+        },
+        {
+            "id": "road-motorway-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "motorway"
+                ]
+            ],
+            "layout": {
+                "line-cap": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "butt",
+                    13,
+                    "round"
+                ],
+                "line-join": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "miter",
+                    13,
+                    "round"
+                ]
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    8,
+                    "hsl(38, 18%, 77%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    4,
+                    0.5,
+                    8,
+                    1,
+                    12,
+                    3,
+                    16,
+                    8,
+                    20,
+                    16
+                ]
+            }
+        },
+        {
+            "id": "road-trunk-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "trunk"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    0.4,
+                    8,
+                    0.8,
+                    12,
+                    2.5,
+                    16,
+                    7,
+                    20,
+                    14
+                ]
+            }
+        },
+        {
+            "id": "road-motorway-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "motorway"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(38, 18%, 85%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    3,
+                    16,
+                    8,
+                    20,
+                    16
                 ]
             }
         }

@@ -1,0 +1,32 @@
+{
+    "id": "infrastructure-bridge-line",
+    "type": "line",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        ["==", ["geometry-type"], "LineString"],
+        ["==", ["get", "subtype"], "bridge"],
+        [
+            "in",
+            ["get", "class"],
+            ["literal", ["bridge", "viaduct", "aqueduct"]]
+        ]
+    ],
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+    },
+    "paint": {
+        "line-color": "hsl(0, 38%, 95%)",
+        "line-width": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            12, 0.75,
+            16, 2.5,
+            20, 5
+        ]
+    }
+}
