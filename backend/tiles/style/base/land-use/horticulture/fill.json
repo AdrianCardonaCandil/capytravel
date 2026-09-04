@@ -1,0 +1,32 @@
+{
+    "id": "land-use-horticulture-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "horticulture"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["orchard", "garden", "flowerbed", "vineyard"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(118, 38%, 93%)",
+        "fill-outline-color": "hsl(118, 38%, 91%)"
+    }
+}

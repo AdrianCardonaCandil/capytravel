@@ -6,20 +6,22 @@
     "minzoom": 13,
     "filter": [
         "all",
-        ["==", ["geometry-type"], "Polygon"],
-        ["==", ["get", "subtype"], "tower"],
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "tower"
+        ],
         [
             "in",
             ["get", "class"],
             [
                 "literal",
-                [
-                    "bell_tower",
-                    "defensive",
-                    "minaret",
-                    "observation",
-                    "watchtower"
-                ]
+                ["bell_tower", "defensive", "minaret", "observation", "watchtower"]
             ]
         ]
     ],

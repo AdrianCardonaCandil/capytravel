@@ -1,0 +1,32 @@
+{
+    "id": "land-use-protected-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "protected"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["nature_reserve", "national_park", "protected_landscape_seascape"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(118, 38%, 88%)",
+        "fill-outline-color": "hsl(118, 38%, 86%)"
+    }
+}

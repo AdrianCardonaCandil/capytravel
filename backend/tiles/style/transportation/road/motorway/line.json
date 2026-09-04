@@ -6,8 +6,16 @@
     "minzoom": 12,
     "filter": [
         "all",
-        ["==", ["get", "subtype"], "road"],
-        ["==", ["get", "class"], "motorway"]
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "motorway"
+        ]
     ],
     "layout": {
         "line-cap": "round",
@@ -16,10 +24,15 @@
     "paint": {
         "line-color": "hsl(38, 18%, 85%)",
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            12, 3,
-            16, 8,
-            20, 16
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            12,
+            3,
+            16,
+            8,
+            20,
+            16
         ]
     }
 }

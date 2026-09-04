@@ -1,0 +1,32 @@
+{
+    "id": "land-use-entertainment-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "entertainment"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["water_park", "zoo", "theme_park"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(48, 42%, 93%)",
+        "fill-outline-color": "hsl(48, 42%, 91%)"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "id": "land-use-military-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "military"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["military", "base", "naval_base"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(213, 10%, 97%)",
+        "fill-outline-color": "hsl(213, 19%, 96%)"
+    }
+}

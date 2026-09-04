@@ -11,17 +11,28 @@
     "paint": {
         "line-color": "hsl(0, 0%, 100%)",
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            1, 0,
-            4, 0.25,
-            10, 1,
-            13, 2
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            1,
+            0,
+            4,
+            0.25,
+            10,
+            1,
+            13,
+            2
         ],
         "line-opacity": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            1, 0,
-            4, 0.7,
-            10, 1
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            1,
+            0,
+            4,
+            0.7,
+            10,
+            1
         ]
     }
 }

@@ -11,22 +11,37 @@
     "paint": {
         "line-color": "hsl(213, 19%, 91%)",
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            8, 0.3,
-            13, 0.8
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            8,
+            0.3,
+            13,
+            0.8
         ],
         "line-gap-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            1, 0,
-            4, 0.25,
-            10, 1,
-            13, 2
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            1,
+            0,
+            4,
+            0.25,
+            10,
+            1,
+            13,
+            2
         ],
         "line-opacity": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            1, 0,
-            4, 0.7,
-            10, 1
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            1,
+            0,
+            4,
+            0.7,
+            10,
+            1
         ]
     }
 }

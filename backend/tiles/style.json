@@ -84,19 +84,6 @@
                 ],
                 "Polygon"
             ],
-            "layout": {
-                "fill-sort-key": [
-                    "-",
-                    [
-                        "coalesce",
-                        [
-                            "get",
-                            "depth"
-                        ],
-                        0
-                    ]
-                ]
-            },
             "paint": {
                 "fill-color": [
                     "match",
@@ -132,9 +119,7 @@
                     3000,
                     "hsl(200, 90%, 74%)",
                     "transparent"
-                ],
-                "fill-opacity": 1,
-                "fill-outline-color": "transparent"
+                ]
             }
         },
         {
@@ -176,7 +161,7 @@
             }
         },
         {
-            "id": "land-use-fill",
+            "id": "land-use-protected-fill",
             "type": "fill",
             "source": "base",
             "source-layer": "land_use",
@@ -191,190 +176,159 @@
                     "Polygon"
                 ],
                 [
-                    "match",
+                    "==",
                     [
                         "get",
                         "subtype"
                     ],
-                    "agriculture",
+                    "protected"
+                ],
+                [
+                    "in",
                     [
-                        "in",
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
                         [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "farmyard",
-                                "meadow",
-                                "farmland"
-                            ]
+                            "nature_reserve",
+                            "national_park",
+                            "protected_landscape_seascape"
                         ]
-                    ],
-                    "campground",
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(118, 38%, 88%)",
+                "fill-outline-color": "hsl(118, 38%, 86%)"
+            }
+        },
+        {
+            "id": "land-use-agriculture-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
                     [
-                        "==",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "camp_site"
+                        "geometry-type"
                     ],
-                    "cemetery",
+                    "Polygon"
+                ],
+                [
+                    "==",
                     [
-                        "in",
+                        "get",
+                        "subtype"
+                    ],
+                    "agriculture"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
                         [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "cemetery",
-                                "graveyard"
-                            ]
+                            "farmyard",
+                            "meadow",
+                            "farmland"
                         ]
-                    ],
-                    "education",
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(75, 28%, 92%)",
+                "fill-outline-color": "hsl(75, 28%, 90%)"
+            }
+        },
+        {
+            "id": "land-use-park-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
                     [
-                        "in",
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "park"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
                         [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "college",
-                                "university"
-                            ]
+                            "park",
+                            "dog_park",
+                            "village_green"
                         ]
-                    ],
-                    "entertainment",
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(118, 38%, 88%)",
+                "fill-outline-color": "hsl(118, 38%, 86%)"
+            }
+        },
+        {
+            "id": "land-use-golf-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
                     [
-                        "in",
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "golf"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
                         [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "water_park",
-                                "zoo",
-                                "theme_park"
-                            ]
+                            "golf_course",
+                            "fairway",
+                            "rough"
                         ]
-                    ],
-                    "golf",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "golf_course",
-                                "fairway",
-                                "rough"
-                            ]
-                        ]
-                    ],
-                    "horticulture",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "orchard",
-                                "garden",
-                                "flowerbed",
-                                "vineyard"
-                            ]
-                        ]
-                    ],
-                    "medical",
-                    [
-                        "==",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "hospital"
-                    ],
-                    "military",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "military",
-                                "base",
-                                "naval_base"
-                            ]
-                        ]
-                    ],
-                    "park",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "park",
-                                "dog_park",
-                                "village_green"
-                            ]
-                        ]
-                    ],
-                    "protected",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "nature_reserve",
-                                "national_park",
-                                "protected_landscape_seascape"
-                            ]
-                        ]
-                    ],
-                    "recreation",
-                    [
-                        "in",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "literal",
-                            [
-                                "pitch",
-                                "recreation_ground",
-                                "playground",
-                                "track"
-                            ]
-                        ]
-                    ],
-                    false
+                    ]
                 ]
             ],
             "layout": {
@@ -382,53 +336,13 @@
                     "match",
                     [
                         "get",
-                        "subtype"
+                        "class"
                     ],
-                    "protected",
+                    "golf_course",
                     1,
-                    "agriculture",
+                    "rough",
                     2,
-                    "park",
-                    3,
-                    "golf",
-                    [
-                        "match",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "golf_course",
-                        4,
-                        "rough",
-                        5,
-                        6
-                    ],
-                    "campground",
-                    7,
-                    "horticulture",
-                    8,
-                    "military",
-                    9,
-                    "recreation",
-                    [
-                        "match",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "recreation_ground",
-                        10,
-                        11
-                    ],
-                    "entertainment",
-                    12,
-                    "education",
-                    13,
-                    "medical",
-                    14,
-                    "cemetery",
-                    15,
-                    0
+                    3
                 ]
             },
             "paint": {
@@ -436,90 +350,372 @@
                     "match",
                     [
                         "get",
-                        "subtype"
+                        "class"
                     ],
-                    [
-                        "protected",
-                        "park"
-                    ],
+                    "golf_course",
                     "hsl(118, 38%, 88%)",
-                    [
-                        "agriculture",
-                        "cemetery"
-                    ],
-                    "hsl(75, 28%, 92%)",
-                    "golf",
-                    [
-                        "match",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "golf_course",
-                        "hsl(118, 38%, 88%)",
-                        "hsl(118, 38%, 93%)"
-                    ],
-                    [
-                        "campground",
-                        "horticulture",
-                        "recreation"
-                    ],
-                    "hsl(118, 38%, 93%)",
-                    "military",
-                    "hsl(213, 10%, 97%)",
-                    [
-                        "education",
-                        "entertainment"
-                    ],
-                    "hsl(48, 42%, 93%)",
-                    "medical",
-                    "hsl(0, 38%, 95%)",
-                    "transparent"
+                    "hsl(118, 38%, 93%)"
                 ],
                 "fill-outline-color": [
                     "match",
                     [
                         "get",
+                        "class"
+                    ],
+                    "golf_course",
+                    "hsl(118, 38%, 86%)",
+                    "hsl(118, 38%, 91%)"
+                ]
+            }
+        },
+        {
+            "id": "land-use-campground-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
                         "subtype"
                     ],
+                    "campground"
+                ],
+                [
+                    "==",
                     [
-                        "protected",
-                        "park"
+                        "get",
+                        "class"
                     ],
-                    "hsl(118, 38%, 86%)",
-                    [
-                        "agriculture",
-                        "cemetery"
-                    ],
-                    "hsl(75, 28%, 90%)",
-                    "golf",
-                    [
-                        "match",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        "golf_course",
-                        "hsl(118, 38%, 86%)",
-                        "hsl(118, 38%, 91%)"
-                    ],
-                    [
-                        "campground",
-                        "horticulture",
-                        "recreation"
-                    ],
-                    "hsl(118, 38%, 91%)",
-                    "military",
-                    "hsl(213, 19%, 96%)",
-                    [
-                        "education",
-                        "entertainment"
-                    ],
-                    "hsl(48, 42%, 91%)",
-                    "medical",
-                    "hsl(0, 38%, 94%)",
-                    "transparent"
+                    "camp_site"
                 ]
+            ],
+            "paint": {
+                "fill-color": "hsl(118, 38%, 93%)",
+                "fill-outline-color": "hsl(118, 38%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-horticulture-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "horticulture"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "orchard",
+                            "garden",
+                            "flowerbed",
+                            "vineyard"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(118, 38%, 93%)",
+                "fill-outline-color": "hsl(118, 38%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-military-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "military"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "military",
+                            "base",
+                            "naval_base"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(213, 10%, 97%)",
+                "fill-outline-color": "hsl(213, 19%, 96%)"
+            }
+        },
+        {
+            "id": "land-use-recreation-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "recreation"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "pitch",
+                            "recreation_ground",
+                            "playground",
+                            "track"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "recreation_ground",
+                    1,
+                    2
+                ]
+            },
+            "paint": {
+                "fill-color": "hsl(118, 38%, 93%)",
+                "fill-outline-color": "hsl(118, 38%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-entertainment-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "entertainment"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "water_park",
+                            "zoo",
+                            "theme_park"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(48, 42%, 93%)",
+                "fill-outline-color": "hsl(48, 42%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-education-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "education"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "college",
+                            "university"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(48, 42%, 93%)",
+                "fill-outline-color": "hsl(48, 42%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-medical-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "medical"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "hospital"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(0, 38%, 95%)",
+                "fill-outline-color": "hsl(0, 38%, 94%)"
+            }
+        },
+        {
+            "id": "land-use-cemetery-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "cemetery"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "cemetery",
+                            "graveyard"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(75, 28%, 92%)",
+                "fill-outline-color": "hsl(75, 28%, 90%)"
             }
         },
         {
@@ -936,11 +1132,11 @@
                         "zoom"
                     ],
                     12,
-                    0.75,
+                    0.5,
                     16,
-                    2.5,
+                    2,
                     20,
-                    5
+                    4
                 ]
             }
         },
@@ -1043,11 +1239,11 @@
                         "zoom"
                     ],
                     12,
-                    0.75,
+                    1,
                     16,
-                    2.5,
+                    3,
                     20,
-                    5
+                    6
                 ]
             }
         },
@@ -1136,11 +1332,11 @@
                         "zoom"
                     ],
                     12,
-                    0.75,
+                    1,
                     16,
-                    2.5,
+                    3,
                     20,
-                    5
+                    6
                 ]
             }
         },
@@ -1229,11 +1425,11 @@
                         "zoom"
                     ],
                     12,
-                    0.75,
+                    1,
                     16,
-                    2.5,
+                    3,
                     20,
-                    5
+                    6
                 ]
             }
         },
@@ -1381,11 +1577,11 @@
                         "zoom"
                     ],
                     12,
-                    0.75,
+                    1,
                     16,
-                    2.5,
+                    3,
                     20,
-                    5
+                    6
                 ]
             }
         },

@@ -1,0 +1,32 @@
+{
+    "id": "land-use-education-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "education"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["college", "university"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(48, 42%, 93%)",
+        "fill-outline-color": "hsl(48, 42%, 91%)"
+    }
+}

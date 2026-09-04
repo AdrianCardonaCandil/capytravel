@@ -6,9 +6,21 @@
     "minzoom": 13,
     "filter": [
         "all",
-        ["==", ["geometry-type"], "Polygon"],
-        ["==", ["get", "subtype"], "quay"],
-        ["==", ["get", "class"], "quay"]
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "quay"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "quay"
+        ]
     ],
     "paint": {
         "fill-color": "hsl(31, 34%, 93%)",

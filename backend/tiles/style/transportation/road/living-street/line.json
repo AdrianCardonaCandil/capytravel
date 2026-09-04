@@ -6,8 +6,16 @@
     "minzoom": 12,
     "filter": [
         "all",
-        ["==", ["get", "subtype"], "road"],
-        ["==", ["get", "class"], "living_street"]
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "living_street"
+        ]
     ],
     "layout": {
         "line-cap": "round",
@@ -16,11 +24,17 @@
     "paint": {
         "line-color": "hsl(0, 0%, 100%)",
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            13, 0.2,
-            14, 0.6,
-            16, 2.5,
-            20, 5
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            13,
+            0.2,
+            14,
+            0.6,
+            16,
+            2.5,
+            20,
+            5
         ]
     }
 }

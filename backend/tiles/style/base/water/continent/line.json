@@ -5,13 +5,21 @@
     "source-layer": "water",
     "filter": [
         "all",
-        ["==", ["geometry-type"], "LineString"],
+        [
+            "==",
+            ["geometry-type"],
+            "LineString"
+        ],
         ["has", "subtype"]
     ],
     "layout": {
         "line-sort-key": [
             "case",
-            ["==", ["get", "is_intermittent"], true],
+            [
+                "==",
+                ["get", "is_intermittent"],
+                true
+            ],
             2,
             1
         ],
@@ -22,7 +30,11 @@
         "line-color": "hsl(200, 98%, 83%)",
         "line-width": [
             "case",
-            ["==", ["get", "is_intermittent"], false],
+            [
+                "==",
+                ["get", "is_intermittent"],
+                false
+            ],
             [
                 "match",
                 ["get", "class"],
@@ -34,7 +46,11 @@
         ],
         "line-opacity": [
             "case",
-            ["==", ["get", "is_intermittent"], true],
+            [
+                "==",
+                ["get", "is_intermittent"],
+                true
+            ],
             0.25,
             1
         ]

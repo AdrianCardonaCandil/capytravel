@@ -5,8 +5,16 @@
     "source-layer": "water",
     "filter": [
         "all",
-        ["==", ["geometry-type"], "Polygon"],
-        ["==", ["get", "subtype"], "ocean"]
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "ocean"
+        ]
     ],
     "paint": {
         "fill-color": "hsl(200, 88%, 72%)",

@@ -6,12 +6,23 @@
     "minzoom": 13,
     "filter": [
         "all",
-        ["==", ["geometry-type"], "Polygon"],
-        ["==", ["get", "subtype"], "bridge"],
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "bridge"
+        ],
         [
             "in",
             ["get", "class"],
-            ["literal", ["bridge", "viaduct", "aqueduct"]]
+            [
+                "literal",
+                ["bridge", "viaduct", "aqueduct"]
+            ]
         ]
     ],
     "paint": {

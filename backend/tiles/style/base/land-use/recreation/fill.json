@@ -1,0 +1,40 @@
+{
+    "id": "land-use-recreation-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "recreation"],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["pitch", "recreation_ground", "playground", "track"]
+            ]
+        ]
+    ],
+    "layout": {
+        "fill-sort-key": [
+            "match",
+            ["get", "class"],
+            "recreation_ground",
+            1,
+            2
+        ]
+    },
+    "paint": {
+        "fill-color": "hsl(118, 38%, 93%)",
+        "fill-outline-color": "hsl(118, 38%, 91%)"
+    }
+}

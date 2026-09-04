@@ -6,9 +6,21 @@
     "minzoom": 13,
     "filter": [
         "all",
-        ["==", ["geometry-type"], "LineString"],
-        ["==", ["get", "subtype"], "recreation"],
-        ["==", ["get", "class"], "roller_coaster"]
+        [
+            "==",
+            ["geometry-type"],
+            "LineString"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "recreation"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "roller_coaster"
+        ]
     ],
     "layout": {
         "line-cap": "round",
@@ -20,9 +32,12 @@
             "interpolate",
             ["exponential", 1.5],
             ["zoom"],
-            12, 0.75,
-            16, 2.5,
-            20, 5
+            12,
+            0.75,
+            16,
+            2.5,
+            20,
+            5
         ]
     }
 }

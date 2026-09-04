@@ -1,0 +1,29 @@
+{
+    "id": "land-use-campground-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "campground"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "camp_site"
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(118, 38%, 93%)",
+        "fill-outline-color": "hsl(118, 38%, 91%)"
+    }
+}

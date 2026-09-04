@@ -5,17 +5,28 @@
     "source-layer": "water",
     "filter": [
         "all",
-        ["==", ["geometry-type"], "LineString"],
+        [
+            "==",
+            ["geometry-type"],
+            "LineString"
+        ],
         ["has", "subtype"],
-        ["!", ["has", "is_intermittent"]]
+        [
+            "!",
+            ["has", "is_intermittent"]
+        ]
     ],
     "layout": {
         "text-field": ["get", "@name"],
         "text-font": ["Nunito Italic", "Noto Sans Italic"],
         "text-size": [
-            "interpolate", ["linear"], ["zoom"],
-            10, 13.5,
-            14, 16.5
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            13.5,
+            14,
+            16.5
         ],
         "symbol-placement": "line",
         "symbol-spacing": 500,

@@ -1,0 +1,32 @@
+{
+    "id": "land-use-park-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "park"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["park", "dog_park", "village_green"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(118, 38%, 88%)",
+        "fill-outline-color": "hsl(118, 38%, 86%)"
+    }
+}

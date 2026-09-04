@@ -6,8 +6,19 @@
     "minzoom": 12,
     "filter": [
         "all",
-        ["==", ["get", "subtype"], "road"],
-        ["in", ["get", "class"], ["literal", ["unclassified", "service", "unknown"]]]
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["unclassified", "service", "unknown"]
+            ]
+        ]
     ],
     "layout": {
         "line-cap": "round",
@@ -16,10 +27,15 @@
     "paint": {
         "line-color": "hsl(0, 0%, 100%)",
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            12, 0.2,
-            16, 2,
-            20, 4
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            12,
+            0.2,
+            16,
+            2,
+            20,
+            4
         ]
     }
 }

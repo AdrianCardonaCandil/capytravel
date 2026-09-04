@@ -6,39 +6,64 @@
     "minzoom": 12,
     "filter": [
         "all",
-        ["==", ["get", "subtype"], "road"],
-        ["==", ["get", "class"], "trunk"]
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "trunk"
+        ]
     ],
     "layout": {
         "line-cap": [
-            "step", ["zoom"],
-            "butt", 13,
+            "step",
+            ["zoom"],
+            "butt",
+            13,
             "round"
         ],
         "line-join": [
-            "step", ["zoom"],
-            "miter", 13,
+            "step",
+            ["zoom"],
+            "miter",
+            13,
             "round"
         ]
     },
     "paint": {
         "line-color": [
-            "step", ["zoom"],
-            "hsla(0, 0%, 0%, 0)", 8,
+            "step",
+            ["zoom"],
+            "hsla(0, 0%, 0%, 0)",
+            8,
             "hsl(213, 19%, 91%)"
         ],
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            14, 1,
-            20, 2
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            14,
+            1,
+            20,
+            2
         ],
         "line-gap-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            5, 0.4,
-            8, 0.8,
-            12, 2.5,
-            16, 7,
-            20, 14
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            5,
+            0.4,
+            8,
+            0.8,
+            12,
+            2.5,
+            16,
+            7,
+            20,
+            14
         ]
     }
 }

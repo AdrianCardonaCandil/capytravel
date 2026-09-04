@@ -6,9 +6,21 @@
     "minzoom": 13,
     "filter": [
         "all",
-        ["==", ["geometry-type"], "LineString"],
-        ["==", ["get", "subtype"], "pier"],
-        ["==", ["get", "class"], "pier"]
+        [
+            "==",
+            ["geometry-type"],
+            "LineString"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "pier"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "pier"
+        ]
     ],
     "layout": {
         "line-cap": "round",
@@ -20,9 +32,12 @@
             "interpolate",
             ["exponential", 1.5],
             ["zoom"],
-            12, 0.75,
-            16, 2.5,
-            20, 5
+            12,
+            1,
+            16,
+            3,
+            20,
+            6
         ]
     }
 }

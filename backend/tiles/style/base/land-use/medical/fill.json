@@ -1,0 +1,29 @@
+{
+    "id": "land-use-medical-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "medical"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "hospital"
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(0, 38%, 95%)",
+        "fill-outline-color": "hsl(0, 38%, 94%)"
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "id": "land-use-golf-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "golf"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["golf_course", "fairway", "rough"]
+            ]
+        ]
+    ],
+    "layout": {
+        "fill-sort-key": [
+            "match",
+            ["get", "class"],
+            "golf_course",
+            1,
+            "rough",
+            2,
+            3
+        ]
+    },
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "class"],
+            "golf_course",
+            "hsl(118, 38%, 88%)",
+            "hsl(118, 38%, 93%)"
+        ],
+        "fill-outline-color": [
+            "match",
+            ["get", "class"],
+            "golf_course",
+            "hsl(118, 38%, 86%)",
+            "hsl(118, 38%, 91%)"
+        ]
+    }
+}

@@ -6,8 +6,16 @@
     "minzoom": 12,
     "filter": [
         "all",
-        ["==", ["get", "subtype"], "road"],
-        ["==", ["get", "class"], "trunk"]
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "trunk"
+        ]
     ],
     "layout": {
         "line-cap": "round",
@@ -16,12 +24,19 @@
     "paint": {
         "line-color": "hsl(0, 0%, 100%)",
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            5, 0.4,
-            8, 0.8,
-            12, 2.5,
-            16, 7,
-            20, 14
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            5,
+            0.4,
+            8,
+            0.8,
+            12,
+            2.5,
+            16,
+            7,
+            20,
+            14
         ]
     }
 }

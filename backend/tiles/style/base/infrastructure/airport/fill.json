@@ -6,23 +6,22 @@
     "minzoom": 13,
     "filter": [
         "all",
-        ["==", ["geometry-type"], "Polygon"],
-        ["==", ["get", "subtype"], "airport"],
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "airport"
+        ],
         [
             "in",
             ["get", "class"],
             [
                 "literal",
-                [
-                    "international_airport",
-                    "military_airport",
-                    "municipal_airport",
-                    "private_airport",
-                    "regional_airport",
-                    "airport",
-                    "runway",
-                    "taxiway"
-                ]
+                ["international_airport", "military_airport", "municipal_airport", "private_airport", "regional_airport", "airport", "runway", "taxiway"]
             ]
         ]
     ],
@@ -30,7 +29,8 @@
         "fill-sort-key": [
             "match",
             ["get", "class"],
-            ["runway", "taxiway"], 2,
+            ["runway", "taxiway"],
+            2,
             1
         ]
     },

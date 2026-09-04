@@ -6,8 +6,19 @@
     "minzoom": 15,
     "filter": [
         "all",
-        ["==", ["get", "subtype"], "road"],
-        ["in", ["get", "class"], ["literal", ["pedestrian", "footway", "path", "track", "cycleway", "bridleway"]]]
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["pedestrian", "footway", "path", "track", "cycleway", "bridleway"]
+            ]
+        ]
     ],
     "layout": {
         "line-cap": "round",
@@ -15,21 +26,33 @@
     },
     "paint": {
         "line-color": [
-            "step", ["zoom"],
-            "hsla(0, 0%, 0%, 0)", 18,
+            "step",
+            ["zoom"],
+            "hsla(0, 0%, 0%, 0)",
+            18,
             "transparent"
         ],
         "line-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            14, 0.5,
-            18, 1,
-            22, 2
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            14,
+            0.5,
+            18,
+            1,
+            22,
+            2
         ],
         "line-gap-width": [
-            "interpolate", ["exponential", 1.5], ["zoom"],
-            12, 0,
-            18, 6,
-            22, 80
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            12,
+            0,
+            18,
+            6,
+            22,
+            80
         ]
     }
 }
