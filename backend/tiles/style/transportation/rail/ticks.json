@@ -1,0 +1,25 @@
+{
+    "id": "rail-ticks",
+    "type": "line",
+    "source": "transportation",
+    "source-layer": "segment",
+    "minzoom": 14,
+    "filter": [
+        "==",
+        ["get", "subtype"],
+        "rail"
+    ],
+    "paint": {
+        "line-color": "hsla(38, 38%, 80%, 0.7)",
+        "line-width": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            14,
+            4,
+            20,
+            12
+        ],
+        "line-dasharray": [0.2, 8]
+    }
+}
