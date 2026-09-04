@@ -3051,6 +3051,607 @@
                     16
                 ]
             }
+        },
+        {
+            "id": "road-other-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 16,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "unclassified",
+                            "service",
+                            "unknown"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    16,
+                    6,
+                    18,
+                    10
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-living-street-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 16,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "living_street"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    16,
+                    6,
+                    18,
+                    11
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-residential-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "residential"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    15,
+                    6,
+                    18,
+                    12
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-tertiary-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 14,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "tertiary"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    6,
+                    15,
+                    8,
+                    18,
+                    12
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-secondary-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "secondary"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    6,
+                    15,
+                    8,
+                    18,
+                    13
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-primary-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "primary"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Medium",
+                    "Noto Sans Medium"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    6,
+                    15,
+                    9,
+                    18,
+                    14
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-trunk-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "trunk"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Medium",
+                    "Noto Sans Medium"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    7,
+                    15,
+                    10,
+                    18,
+                    15
+                ],
+                "text-letter-spacing": 0.15,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-motorway-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "motorway"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Medium",
+                    "Noto Sans Medium"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    8,
+                    15,
+                    11,
+                    18,
+                    16
+                ],
+                "text-letter-spacing": 0.15,
+                "text-max-angle": 30,
+                "text-transform": "uppercase",
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(38, 18%, 40%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1
+            }
         }
     ]
 }

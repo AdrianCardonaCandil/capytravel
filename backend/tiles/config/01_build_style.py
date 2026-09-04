@@ -80,6 +80,14 @@ manifest = [
     'transportation/road/motorway/casing.json',
     'transportation/road/trunk/line.json',
     'transportation/road/motorway/line.json',
+    'transportation/road/other/label.json',
+    'transportation/road/living-street/label.json',
+    'transportation/road/residential/label.json',
+    'transportation/road/tertiary/label.json',
+    'transportation/road/secondary/label.json',
+    'transportation/road/primary/label.json',
+    'transportation/road/trunk/label.json',
+    'transportation/road/motorway/label.json'
 ]
 
 # Layers embedding

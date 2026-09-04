@@ -1,0 +1,55 @@
+{
+    "id": "road-tertiary-label",
+    "type": "symbol",
+    "source": "transportation",
+    "source-layer": "segment",
+    "minzoom": 14,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "tertiary"
+        ]
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": ["Nunito Regular", "Noto Sans Regular"],
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14,
+            6,
+            15,
+            8,
+            18,
+            12
+        ],
+        "text-letter-spacing": 0.1,
+        "text-max-angle": 30,
+        "text-transform": "uppercase",
+        "symbol-placement": "line",
+        "symbol-spacing": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            12,
+            150,
+            18,
+            450,
+            22,
+            1500
+        ]
+    },
+    "paint": {
+        "text-color": "hsl(38, 18%, 40%)",
+        "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+        "text-halo-width": 1
+    }
+}
