@@ -1,0 +1,32 @@
+{
+    "id": "water-line",
+    "type": "line",
+    "source": "transportation",
+    "source-layer": "segment",
+    "minzoom": 12,
+    "filter": [
+        "==",
+        ["get", "subtype"],
+        "water"
+    ],
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+    },
+    "paint": {
+        "line-color": "hsla(210, 16%, 82%, 0.4)",
+        "line-width": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            10,
+            0.2,
+            12,
+            0.5,
+            16,
+            2,
+            20,
+            4
+        ]
+    }
+}

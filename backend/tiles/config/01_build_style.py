@@ -82,6 +82,8 @@ manifest = [
     'transportation/road/motorway/line.json',
     'transportation/rail/line.json',
     'transportation/rail/ticks.json',
+    'transportation/water/line.json',
+    'transportation/water/label.json',
     'transportation/road/other/label.json',
     'transportation/road/living-street/label.json',
     'transportation/road/residential/label.json',
