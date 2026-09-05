@@ -1,0 +1,48 @@
+{
+    "id": "building-extrusion",
+    "type": "fill-extrusion",
+    "source": "buildings",
+    "source-layer": "building",
+    "minzoom": 14,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "!=",
+            ["get", "has_parts"],
+            "true"
+        ]
+    ],
+    "paint": {
+        "fill-extrusion-color": "hsl(31, 30%, 87%)",
+        "fill-extrusion-base": [
+            "case",
+            [
+                ">=",
+                ["get", "min_height"],
+                0
+            ],
+            ["get", "min_height"],
+            0
+        ],
+        "fill-extrusion-height": [
+            "case",
+            ["has", "height"],
+            ["get", "height"],
+            0
+        ],
+        "fill-extrusion-opacity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            15,
+            0.4,
+            16,
+            0.65
+        ]
+    }
+}

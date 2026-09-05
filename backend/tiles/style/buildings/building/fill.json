@@ -1,0 +1,24 @@
+{
+    "id": "building-fill",
+    "type": "fill",
+    "source": "buildings",
+    "source-layer": "building",
+    "minzoom": 14,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "!=",
+            ["get", "has_parts"],
+            "true"
+        ]
+    ],
+    "paint": {
+        "fill-color": "hsl(31, 35%, 93%)",
+        "fill-outline-color": "hsl(31, 35%, 91%)"
+    }
+}
