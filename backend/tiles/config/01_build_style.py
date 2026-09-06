@@ -80,6 +80,8 @@ manifest = [
     'transportation/road/motorway/casing.json',
     'transportation/road/trunk/line.json',
     'transportation/road/motorway/line.json',
+    'divisions/division-boundary/inland/line.json',
+    'divisions/division-boundary/maritime/line.json',
     'buildings/building/fill.json',
     'buildings/building-part/fill.json',
     'buildings/building/extrusion.json',

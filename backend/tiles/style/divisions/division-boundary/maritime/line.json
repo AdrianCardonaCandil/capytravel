@@ -1,0 +1,75 @@
+{
+    "id": "division-boundary-maritime-line",
+    "type": "line",
+    "source": "divisions",
+    "source-layer": "division_boundary",
+    "minzoom": 8,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["get", "class"],
+            "maritime"
+        ]
+    ],
+    "paint": {
+        "line-color": "hsl(0, 0%, 100%)",
+        "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            8,
+            [
+                "match",
+                ["get", "subtype"],
+                ["country", "dependency"],
+                1.5,
+                ["region", "macroregion"],
+                1,
+                ["county", "macrocounty"],
+                0.8,
+                0.1
+            ],
+            12,
+            [
+                "match",
+                ["get", "subtype"],
+                ["country", "dependency"],
+                1.75,
+                ["region", "macroregion"],
+                1.25,
+                ["county", "macrocounty"],
+                0.9,
+                0.15
+            ],
+            16,
+            [
+                "match",
+                ["get", "subtype"],
+                ["country", "dependency"],
+                2,
+                ["region", "macroregion"],
+                1.5,
+                ["county", "macrocounty"],
+                1,
+                0.2
+            ]
+        ],
+        "line-opacity": [
+            "match",
+            ["get", "subtype"],
+            ["country", "dependency"],
+            0.35,
+            ["region", "macroregion"],
+            0.45,
+            ["county", "macrocounty"],
+            0.55,
+            0.5
+        ],
+        "line-dasharray": [2, 2]
+    },
+    "layout": {
+        "line-cap": "butt",
+        "line-join": "round"
+    }
+}
