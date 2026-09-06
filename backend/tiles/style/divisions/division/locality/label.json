@@ -1,0 +1,85 @@
+{
+    "id": "division-locality-label",
+    "type": "symbol",
+    "source": "divisions",
+    "source-layer": "division",
+    "maxzoom": 14,
+    "filter": [
+        "==",
+        ["get", "subtype"],
+        "locality"
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": [
+            "case",
+            [
+                ">=",
+                ["get", "@prominence"],
+                70
+            ],
+            [
+                "literal",
+                ["Nunito Bold", "Noto Sans Bold"]
+            ],
+            [
+                "literal",
+                ["Nunito Medium", "Noto Sans Medium"]
+            ]
+        ],
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            [
+                "case",
+                [
+                    ">=",
+                    ["get", "@prominence"],
+                    70
+                ],
+                16,
+                14
+            ],
+            12,
+            [
+                "case",
+                [
+                    ">=",
+                    ["get", "@prominence"],
+                    50
+                ],
+                24,
+                20
+            ],
+            14,
+            [
+                "case",
+                [
+                    ">=",
+                    ["get", "@prominence"],
+                    30
+                ],
+                28,
+                24
+            ]
+        ],
+        "text-letter-spacing": 0.2,
+        "text-max-width": 6,
+        "text-allow-overlap": false
+    },
+    "paint": {
+        "text-color": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            11,
+            "hsl(0, 0%, 18%)",
+            14,
+            "hsl(0, 0%, 57%)"
+        ],
+        "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
+        "text-halo-width": 1.5
+    }
+}

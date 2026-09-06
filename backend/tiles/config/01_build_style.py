@@ -96,7 +96,12 @@ manifest = [
     'transportation/road/primary/label.json',
     'transportation/road/trunk/label.json',
     'transportation/road/motorway/label.json',
-    'transportation/rail/label.json'
+    'transportation/rail/label.json',
+    "divisions/division/county/label.json",
+    "divisions/division/local/label.json",
+    "divisions/division/region/label.json",
+    "divisions/division/locality/label.json",
+    "divisions/division/country/label.json"
 ]
 
 # Layers embedding

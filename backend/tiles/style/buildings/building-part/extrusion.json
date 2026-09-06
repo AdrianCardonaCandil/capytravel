@@ -12,19 +12,21 @@
     "paint": {
         "fill-extrusion-color": "hsl(31, 30%, 86%)",
         "fill-extrusion-base": [
-            "case",
+            "max",
             [
-                ">=",
+                "coalesce",
                 ["get", "min_height"],
                 0
             ],
-            ["get", "min_height"],
             0
         ],
         "fill-extrusion-height": [
-            "case",
-            ["has", "height"],
-            ["get", "height"],
+            "max",
+            [
+                "coalesce",
+                ["get", "height"],
+                0
+            ],
             0
         ],
         "fill-extrusion-opacity": [

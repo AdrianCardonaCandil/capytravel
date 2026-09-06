@@ -1,0 +1,95 @@
+{
+    "id": "division-region-label",
+    "type": "symbol",
+    "source": "divisions",
+    "source-layer": "division",
+    "maxzoom": 11,
+    "filter": [
+        "all",
+        [
+            "in",
+            ["get", "subtype"],
+            [
+                "literal",
+                ["region", "macroregion"]
+            ]
+        ],
+        [
+            "<=",
+            [
+                "length",
+                ["get", "@name"]
+            ],
+            [
+                "step",
+                ["zoom"],
+                15,
+                6,
+                30,
+                8,
+                999
+            ]
+        ]
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": [
+            "match",
+            ["get", "subtype"],
+            "region",
+            [
+                "literal",
+                ["Nunito Bold", "Noto Sans Bold"]
+            ],
+            [
+                "literal",
+                ["Nunito Regular", "Noto Sans Regular"]
+            ]
+        ],
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            4,
+            [
+                "match",
+                ["get", "subtype"],
+                "region",
+                9,
+                6
+            ],
+            9,
+            [
+                "match",
+                ["get", "subtype"],
+                "region",
+                15,
+                12
+            ],
+            12,
+            [
+                "match",
+                ["get", "subtype"],
+                "region",
+                21,
+                18
+            ]
+        ],
+        "text-letter-spacing": 0.15,
+        "text-max-width": 6,
+        "text-allow-overlap": false
+    },
+    "paint": {
+        "text-color": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            11,
+            "hsl(0, 0%, 18%)",
+            14,
+            "hsl(0, 0%, 57%)"
+        ],
+        "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
+        "text-halo-width": 1.1
+    }
+}

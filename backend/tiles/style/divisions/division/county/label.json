@@ -1,0 +1,76 @@
+{
+    "id": "division-county-label",
+    "type": "symbol",
+    "source": "divisions",
+    "source-layer": "division",
+    "maxzoom": 13,
+    "filter": [
+        "in",
+        ["get", "subtype"],
+        [
+            "literal",
+            ["macrocounty", "county"]
+        ]
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": [
+            "match",
+            ["get", "subtype"],
+            "county",
+            [
+                "literal",
+                ["Nunito Bold", "Noto Sans Bold"]
+            ],
+            [
+                "literal",
+                ["Nunito Regular", "Noto Sans Regular"]
+            ]
+        ],
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            8,
+            [
+                "match",
+                ["get", "subtype"],
+                "county",
+                9,
+                6
+            ],
+            10,
+            [
+                "match",
+                ["get", "subtype"],
+                "county",
+                12,
+                9
+            ],
+            12,
+            [
+                "match",
+                ["get", "subtype"],
+                "county",
+                18,
+                15
+            ]
+        ],
+        "text-letter-spacing": 0.125,
+        "text-max-width": 8,
+        "text-allow-overlap": false
+    },
+    "paint": {
+        "text-color": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            11,
+            "hsl(0, 0%, 18%)",
+            14,
+            "hsl(0, 0%, 57%)"
+        ],
+        "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
+        "text-halo-width": 2
+    }
+}

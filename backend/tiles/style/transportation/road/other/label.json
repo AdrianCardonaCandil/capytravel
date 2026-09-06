@@ -34,7 +34,6 @@
         ],
         "text-letter-spacing": 0.1,
         "text-max-angle": 30,
-        "text-transform": "uppercase",
         "symbol-placement": "line",
         "symbol-spacing": [
             "interpolate",

@@ -1,0 +1,105 @@
+{
+    "id": "division-country-label",
+    "type": "symbol",
+    "source": "divisions",
+    "source-layer": "division",
+    "maxzoom": 9,
+    "filter": [
+        "all",
+        [
+            "in",
+            ["get", "subtype"],
+            [
+                "literal",
+                ["country", "dependency"]
+            ]
+        ],
+        [
+            "<=",
+            [
+                "length",
+                ["get", "@name"]
+            ],
+            [
+                "step",
+                ["zoom"],
+                15,
+                3,
+                25,
+                5,
+                50,
+                7,
+                999
+            ]
+        ]
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": [
+            "match",
+            ["get", "subtype"],
+            "country",
+            [
+                "literal",
+                ["Nunito Bold", "Noto Sans Bold"]
+            ],
+            [
+                "literal",
+                ["Nunito Bold", "Noto Sans Bold"]
+            ]
+        ],
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            2,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                10,
+                7
+            ],
+            4,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                13,
+                10
+            ],
+            9,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                19,
+                16
+            ],
+            12,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                25,
+                22
+            ]
+        ],
+        "text-letter-spacing": 0.2,
+        "text-max-width": 8,
+        "text-allow-overlap": false
+    },
+    "paint": {
+        "text-color": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            11,
+            "hsl(0, 0%, 18%)",
+            14,
+            "hsl(0, 0%, 57%)"
+        ],
+        "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
+        "text-halo-width": 1.2
+    }
+}
