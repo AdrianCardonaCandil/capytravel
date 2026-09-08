@@ -27,7 +27,7 @@
         "line-join": "round"
     },
     "paint": {
-        "line-color": "hsl(200, 98%, 83%)",
+        "line-color": "hsl(196, 56%, 76%)",
         "line-width": [
             "case",
             [

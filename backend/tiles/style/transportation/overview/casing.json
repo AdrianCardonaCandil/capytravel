@@ -9,7 +9,13 @@
         "line-join": "round"
     },
     "paint": {
-        "line-color": "hsl(213, 19%, 91%)",
+        "line-color": [
+            "step",
+            ["zoom"],
+            "transparent",
+            8,
+            "hsl(210, 16%, 84%)"
+        ],
         "line-width": [
             "interpolate",
             ["exponential", 1.5],

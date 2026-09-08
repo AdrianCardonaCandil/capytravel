@@ -39,7 +39,7 @@
             ["zoom"],
             "hsla(0, 0%, 0%, 0)",
             10,
-            "hsl(213, 19%, 91%)"
+            "hsl(210, 16%, 84%)"
         ],
         "line-width": [
             "interpolate",

@@ -3,11 +3,27 @@
     "type": "symbol",
     "source": "divisions",
     "source-layer": "division",
-    "maxzoom": 14,
+    "maxzoom": 16,
     "filter": [
-        "==",
-        ["get", "subtype"],
-        "locality"
+        "all",
+        [
+            "==",
+            ["get", "subtype"],
+            "locality"
+        ],
+        [
+            ">=",
+            ["to-number", ["get", "@prominence"], 0],
+            [
+                "step",
+                ["zoom"],
+                0,
+                12,
+                25,
+                14,
+                70
+            ]
+        ]
     ],
     "layout": {
         "text-field": ["get", "@name"],
@@ -39,8 +55,8 @@
                     ["get", "@prominence"],
                     70
                 ],
-                16,
-                14
+                18,
+                11
             ],
             12,
             [
@@ -50,8 +66,8 @@
                     ["get", "@prominence"],
                     50
                 ],
-                24,
-                20
+                20,
+                12.5
             ],
             14,
             [
@@ -59,27 +75,44 @@
                 [
                     ">=",
                     ["get", "@prominence"],
-                    30
+                    70
                 ],
-                28,
-                24
+                24,
+                14
             ]
         ],
-        "text-letter-spacing": 0.2,
+        "text-letter-spacing": 0,
         "text-max-width": 6,
+        "text-padding": 6,
         "text-allow-overlap": false
     },
     "paint": {
         "text-color": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            11,
-            "hsl(0, 0%, 18%)",
-            14,
-            "hsl(0, 0%, 57%)"
+            "case",
+            [
+                ">=",
+                ["get", "@prominence"],
+                70
+            ],
+            "hsl(0, 0%, 13%)",
+            [
+                ">=",
+                ["get", "@prominence"],
+                40
+            ],
+            "hsl(0, 0%, 24%)",
+            "hsl(0, 0%, 30%)"
         ],
-        "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
-        "text-halo-width": 1.5
+        "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+        "text-halo-width": [
+            "case",
+            [
+                ">=",
+                ["get", "@prominence"],
+                70
+            ],
+            1.8,
+            1.2
+        ]
     }
 }

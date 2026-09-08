@@ -19,11 +19,41 @@
     ],
     "paint": {
         "line-color": [
-            "match",
-            ["get", "class"],
-            "maritime",
-            "hsl(0, 0%, 100%)",
-            "hsl(0, 0%, 46%)"
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            3,
+            [
+                "match",
+                ["get", "class"],
+                "maritime",
+                "hsl(202, 30%, 67%)",
+                "hsl(0, 0%, 60%)"
+            ],
+            5,
+            [
+                "match",
+                ["get", "class"],
+                "maritime",
+                "hsl(202, 30%, 67%)",
+                "hsl(0, 0%, 30%)"
+            ],
+            10,
+            [
+                "match",
+                ["get", "class"],
+                "maritime",
+                "hsl(202, 30%, 67%)",
+                "hsl(0, 0%, 54%)"
+            ],
+            14,
+            [
+                "match",
+                ["get", "class"],
+                "maritime",
+                "hsl(202, 30%, 67%)",
+                "hsl(0, 0%, 71%)"
+            ]
         ],
         "line-width": [
             "interpolate",

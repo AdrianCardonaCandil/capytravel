@@ -1,9 +1,9 @@
 {
-    "id": "infrastructure-bridge-fill",
+    "id": "land-use-developed-fill",
     "type": "fill",
     "source": "base",
-    "source-layer": "infrastructure",
-    "minzoom": 13,
+    "source-layer": "land_use",
+    "minzoom": 12,
     "filter": [
         "all",
         [
@@ -14,19 +14,19 @@
         [
             "==",
             ["get", "subtype"],
-            "bridge"
+            "developed"
         ],
         [
             "in",
             ["get", "class"],
             [
                 "literal",
-                ["bridge", "viaduct", "aqueduct"]
+                ["industrial", "warehouse"]
             ]
         ]
     ],
     "paint": {
-        "fill-color": "hsl(0, 38%, 95%)",
-        "fill-outline-color": "hsl(0, 38%, 94%)"
+        "fill-color": "hsl(210, 12%, 94%)",
+        "fill-outline-color": "hsl(210, 15%, 91%)"
     }
 }

@@ -41,15 +41,15 @@
             "match",
             ["get", "class"],
             "golf_course",
-            "hsl(118, 38%, 88%)",
-            "hsl(118, 38%, 93%)"
+            "hsl(111, 41%, 83%)",
+            "hsl(110, 38%, 84%)"
         ],
         "fill-outline-color": [
             "match",
             ["get", "class"],
             "golf_course",
-            "hsl(118, 38%, 86%)",
-            "hsl(118, 38%, 91%)"
+            "hsl(112, 44%, 81%)",
+            "hsl(111, 41%, 83%)"
         ]
     }
 }

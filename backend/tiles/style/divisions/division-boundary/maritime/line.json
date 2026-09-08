@@ -13,7 +13,7 @@
         ]
     ],
     "paint": {
-        "line-color": "hsl(0, 0%, 100%)",
+        "line-color": "hsl(202, 30%, 67%)",
         "line-width": [
             "interpolate",
             ["linear"],

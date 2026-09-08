@@ -10,7 +10,7 @@
         "Polygon"
     ],
     "paint": {
-        "fill-color": "hsl(31, 35%, 91%)",
-        "fill-outline-color": "hsl(31, 35%, 89%)"
+        "fill-color": "hsl(210, 15%, 86%)",
+        "fill-outline-color": "hsl(210, 16%, 84%)"
     }
 }

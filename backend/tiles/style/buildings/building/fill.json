@@ -18,7 +18,7 @@
         ]
     ],
     "paint": {
-        "fill-color": "hsl(31, 35%, 93%)",
-        "fill-outline-color": "hsl(31, 35%, 91%)"
+        "fill-color": "hsl(210, 16%, 89%)",
+        "fill-outline-color": "hsl(210, 15%, 86%)"
     }
 }

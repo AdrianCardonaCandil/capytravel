@@ -69,59 +69,9 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(200, 88%, 72%)",
+                "fill-color": "hsl(196, 40%, 64%)",
                 "fill-opacity": 1,
                 "fill-outline-color": "transparent"
-            }
-        },
-        {
-            "id": "bathymetry-fill",
-            "type": "fill",
-            "source": "base",
-            "source-layer": "bathymetry",
-            "filter": [
-                "==",
-                [
-                    "geometry-type"
-                ],
-                "Polygon"
-            ],
-            "paint": {
-                "fill-color": [
-                    "match",
-                    [
-                        "get",
-                        "depth"
-                    ],
-                    [
-                        0,
-                        10,
-                        20,
-                        30,
-                        40,
-                        50,
-                        60,
-                        70,
-                        80,
-                        90
-                    ],
-                    "hsl(200, 98%, 82%)",
-                    100,
-                    "hsl(200, 97%, 81%)",
-                    500,
-                    "hsl(200, 96%, 80%)",
-                    1000,
-                    "hsl(200, 95%, 79%)",
-                    1500,
-                    "hsl(200, 94%, 78%)",
-                    2000,
-                    "hsl(200, 92%, 76%)",
-                    2500,
-                    "hsl(200, 91%, 75%)",
-                    3000,
-                    "hsl(200, 90%, 74%)",
-                    "transparent"
-                ]
             }
         },
         {
@@ -158,7 +108,7 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(31, 34%, 95.8%)",
+                "fill-color": "hsl(45, 30%, 92%)",
                 "fill-outline-color": "transparent"
             }
         },
@@ -202,12 +152,12 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(118, 38%, 88%)",
-                "fill-outline-color": "hsl(118, 38%, 86%)"
+                "fill-color": "hsl(111, 41%, 83%)",
+                "fill-outline-color": "hsl(112, 44%, 81%)"
             }
         },
         {
-            "id": "land-use-agriculture-fill",
+            "id": "land-use-residential-fill",
             "type": "fill",
             "source": "base",
             "source-layer": "land_use",
@@ -227,7 +177,7 @@
                         "get",
                         "subtype"
                     ],
-                    "agriculture"
+                    "residential"
                 ],
                 [
                     "in",
@@ -238,16 +188,57 @@
                     [
                         "literal",
                         [
-                            "farmyard",
-                            "meadow",
-                            "farmland"
+                            "residential"
                         ]
                     ]
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(75, 28%, 92%)",
-                "fill-outline-color": "hsl(75, 28%, 90%)"
+                "fill-color": "hsl(210, 12%, 94%)",
+                "fill-outline-color": "hsl(210, 15%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-developed-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "developed"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "industrial",
+                            "warehouse"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 12%, 94%)",
+                "fill-outline-color": "hsl(210, 15%, 91%)"
             }
         },
         {
@@ -290,8 +281,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(118, 38%, 88%)",
-                "fill-outline-color": "hsl(118, 38%, 86%)"
+                "fill-color": "hsl(111, 41%, 83%)",
+                "fill-outline-color": "hsl(112, 44%, 81%)"
             }
         },
         {
@@ -355,8 +346,8 @@
                         "class"
                     ],
                     "golf_course",
-                    "hsl(118, 38%, 88%)",
-                    "hsl(118, 38%, 93%)"
+                    "hsl(111, 41%, 83%)",
+                    "hsl(110, 38%, 84%)"
                 ],
                 "fill-outline-color": [
                     "match",
@@ -365,8 +356,8 @@
                         "class"
                     ],
                     "golf_course",
-                    "hsl(118, 38%, 86%)",
-                    "hsl(118, 38%, 91%)"
+                    "hsl(112, 44%, 81%)",
+                    "hsl(111, 41%, 83%)"
                 ]
             }
         },
@@ -403,8 +394,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(118, 38%, 93%)",
-                "fill-outline-color": "hsl(118, 38%, 91%)"
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
             }
         },
         {
@@ -448,8 +439,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(118, 38%, 93%)",
-                "fill-outline-color": "hsl(118, 38%, 91%)"
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
             }
         },
         {
@@ -492,8 +483,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(213, 10%, 97%)",
-                "fill-outline-color": "hsl(213, 19%, 96%)"
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
             }
         },
         {
@@ -549,52 +540,8 @@
                 ]
             },
             "paint": {
-                "fill-color": "hsl(118, 38%, 93%)",
-                "fill-outline-color": "hsl(118, 38%, 91%)"
-            }
-        },
-        {
-            "id": "land-use-entertainment-fill",
-            "type": "fill",
-            "source": "base",
-            "source-layer": "land_use",
-            "minzoom": 12,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "Polygon"
-                ],
-                [
-                    "==",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "entertainment"
-                ],
-                [
-                    "in",
-                    [
-                        "get",
-                        "class"
-                    ],
-                    [
-                        "literal",
-                        [
-                            "water_park",
-                            "zoo",
-                            "theme_park"
-                        ]
-                    ]
-                ]
-            ],
-            "paint": {
-                "fill-color": "hsl(48, 42%, 93%)",
-                "fill-outline-color": "hsl(48, 42%, 91%)"
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
             }
         },
         {
@@ -636,7 +583,7 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(48, 42%, 93%)",
+                "fill-color": "hsl(273, 30%, 93%)",
                 "fill-outline-color": "hsl(48, 42%, 91%)"
             }
         },
@@ -673,8 +620,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(0, 38%, 95%)",
-                "fill-outline-color": "hsl(0, 38%, 94%)"
+                "fill-color": "hsl(5, 75%, 93%)",
+                "fill-outline-color": "hsl(5, 66%, 90%)"
             }
         },
         {
@@ -716,8 +663,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(75, 28%, 92%)",
-                "fill-outline-color": "hsl(75, 28%, 90%)"
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
             }
         },
         {
@@ -769,23 +716,23 @@
                         "subtype"
                     ],
                     "barren",
-                    "hsl(48, 52%, 87%)",
+                    "hsl(46, 48%, 88%)",
                     "crop",
-                    "hsl(62, 62%, 81%)",
+                    "hsl(108, 30%, 88%)",
                     "forest",
-                    "hsl(122, 52%, 76%)",
+                    "hsl(112, 44%, 81%)",
                     "grass",
-                    "hsl(95, 60%, 79%)",
+                    "hsl(111, 41%, 83%)",
                     "mangrove",
-                    "hsl(162, 54%, 76%)",
+                    "hsl(112, 44%, 81%)",
                     "moss",
-                    "hsl(138, 48%, 72%)",
+                    "hsl(114, 46%, 79%)",
                     "shrub",
-                    "hsl(78, 58%, 80%)",
+                    "hsl(110, 38%, 84%)",
                     "snow",
-                    "hsl(210, 22%, 96%)",
+                    "hsl(0, 0%, 98%)",
                     "wetland",
-                    "hsl(178, 56%, 80%)",
+                    "hsl(111, 41%, 83%)",
                     "transparent"
                 ],
                 "fill-opacity": [
@@ -856,7 +803,7 @@
                 ]
             },
             "paint": {
-                "fill-color": "hsl(200, 98%, 83%)",
+                "fill-color": "hsl(196, 56%, 76%)",
                 "fill-opacity": [
                     "case",
                     [
@@ -910,7 +857,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(200, 98%, 83%)",
+                "line-color": "hsl(196, 56%, 76%)",
                 "line-width": [
                     "case",
                     [
@@ -1001,7 +948,7 @@
                 "text-max-angle": 25
             },
             "paint": {
-                "text-color": "hsl(194, 85%, 34%)"
+                "text-color": "hsl(198, 40%, 55%)"
             }
         },
         {
@@ -1064,7 +1011,19 @@
                 ]
             },
             "paint": {
-                "fill-color": "hsl(220, 42%, 92%)",
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "runway",
+                        "taxiway"
+                    ],
+                    "hsl(210, 15%, 91%)",
+                    "hsl(210, 31%, 91%)"
+                ],
                 "fill-outline-color": [
                     "match",
                     [
@@ -1075,8 +1034,8 @@
                         "runway",
                         "taxiway"
                     ],
-                    "hsl(220, 42%, 88%)",
-                    "hsl(220, 42%, 90%)"
+                    "hsl(0, 0%, 60%)",
+                    "hsl(212, 30%, 85%)"
                 ]
             }
         },
@@ -1123,7 +1082,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(220, 42%, 88%)",
+                "line-color": "hsl(0, 0%, 60%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -1182,8 +1141,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(31, 34%, 93%)",
-                "fill-outline-color": "hsl(31, 34%, 92%)"
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
             }
         },
         {
@@ -1230,7 +1189,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(31, 34%, 93%)",
+                "line-color": "hsl(210, 15%, 91%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -1282,8 +1241,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(31, 34%, 93%)",
-                "fill-outline-color": "hsl(31, 34%, 92%)"
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
             }
         },
         {
@@ -1323,7 +1282,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(31, 34%, 93%)",
+                "line-color": "hsl(210, 15%, 91%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -1375,8 +1334,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(31, 34%, 93%)",
-                "fill-outline-color": "hsl(31, 34%, 92%)"
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
             }
         },
         {
@@ -1416,7 +1375,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(31, 34%, 93%)",
+                "line-color": "hsl(210, 15%, 91%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -1476,217 +1435,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(220, 42%, 92%)",
-                "fill-outline-color": "hsl(220, 42%, 90%)"
-            }
-        },
-        {
-            "id": "infrastructure-bridge-fill",
-            "type": "fill",
-            "source": "base",
-            "source-layer": "infrastructure",
-            "minzoom": 13,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "Polygon"
-                ],
-                [
-                    "==",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "bridge"
-                ],
-                [
-                    "in",
-                    [
-                        "get",
-                        "class"
-                    ],
-                    [
-                        "literal",
-                        [
-                            "bridge",
-                            "viaduct",
-                            "aqueduct"
-                        ]
-                    ]
-                ]
-            ],
-            "paint": {
-                "fill-color": "hsl(0, 38%, 95%)",
-                "fill-outline-color": "hsl(0, 38%, 94%)"
-            }
-        },
-        {
-            "id": "infrastructure-bridge-line",
-            "type": "line",
-            "source": "base",
-            "source-layer": "infrastructure",
-            "minzoom": 13,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "LineString"
-                ],
-                [
-                    "==",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "bridge"
-                ],
-                [
-                    "in",
-                    [
-                        "get",
-                        "class"
-                    ],
-                    [
-                        "literal",
-                        [
-                            "bridge",
-                            "viaduct",
-                            "aqueduct"
-                        ]
-                    ]
-                ]
-            ],
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
-            "paint": {
-                "line-color": "hsl(0, 38%, 95%)",
-                "line-width": [
-                    "interpolate",
-                    [
-                        "exponential",
-                        1.5
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    12,
-                    1,
-                    16,
-                    3,
-                    20,
-                    6
-                ]
-            }
-        },
-        {
-            "id": "infrastructure-tower-fill",
-            "type": "fill",
-            "source": "base",
-            "source-layer": "infrastructure",
-            "minzoom": 13,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "Polygon"
-                ],
-                [
-                    "==",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "tower"
-                ],
-                [
-                    "in",
-                    [
-                        "get",
-                        "class"
-                    ],
-                    [
-                        "literal",
-                        [
-                            "bell_tower",
-                            "defensive",
-                            "minaret",
-                            "observation",
-                            "watchtower"
-                        ]
-                    ]
-                ]
-            ],
-            "paint": {
-                "fill-color": "hsl(0, 38%, 95%)",
-                "fill-outline-color": "hsl(0, 38%, 94%)"
-            }
-        },
-        {
-            "id": "infrastructure-recreation-line",
-            "type": "line",
-            "source": "base",
-            "source-layer": "infrastructure",
-            "minzoom": 13,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "LineString"
-                ],
-                [
-                    "==",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "recreation"
-                ],
-                [
-                    "==",
-                    [
-                        "get",
-                        "class"
-                    ],
-                    "roller_coaster"
-                ]
-            ],
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
-            "paint": {
-                "line-color": "hsl(48, 42%, 91%)",
-                "line-width": [
-                    "interpolate",
-                    [
-                        "exponential",
-                        1.5
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    12,
-                    0.75,
-                    16,
-                    2.5,
-                    20,
-                    5
-                ]
+                "fill-color": "hsl(210, 31%, 91%)",
+                "fill-outline-color": "hsl(212, 30%, 85%)"
             }
         },
         {
@@ -1700,7 +1450,15 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(213, 19%, 91%)",
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "transparent",
+                    8,
+                    "hsl(210, 16%, 84%)"
+                ],
                 "line-width": [
                     "interpolate",
                     [
@@ -1762,7 +1520,15 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "transparent",
+                    8,
+                    "hsl(210, 15%, 86%)"
+                ],
                 "line-width": [
                     "interpolate",
                     [
@@ -1926,7 +1692,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     12,
-                    "hsl(213, 19%, 91%)"
+                    "hsl(210, 16%, 84%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -1999,7 +1765,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     14,
-                    "hsl(213, 19%, 91%)"
+                    "hsl(210, 16%, 84%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -2072,7 +1838,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     14,
-                    "hsl(213, 19%, 91%)"
+                    "hsl(210, 16%, 84%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -2145,7 +1911,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     14,
-                    "hsl(213, 19%, 91%)"
+                    "hsl(210, 16%, 84%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -2218,7 +1984,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     12,
-                    "hsl(213, 19%, 91%)"
+                    "hsl(210, 16%, 84%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -2307,7 +2073,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     10,
-                    "hsl(213, 19%, 91%)"
+                    "hsl(210, 16%, 84%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -2375,7 +2141,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsla(0, 0%, 100%, 0.7)",
+                "line-color": "hsl(210, 15%, 91%)",
                 "line-dasharray": [
                     0.5,
                     0.25
@@ -2438,7 +2204,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsla(0, 0%, 100%, 0.7)",
+                "line-color": "hsl(210, 15%, 91%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -2494,7 +2260,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(210, 15%, 86%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -2543,7 +2309,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(210, 15%, 86%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -2594,7 +2360,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(210, 15%, 86%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -2645,7 +2411,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(210, 15%, 86%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -2696,7 +2462,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(210, 15%, 86%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -2747,7 +2513,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(210, 15%, 86%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -2823,7 +2589,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     8,
-                    "hsl(213, 19%, 91%)"
+                    "hsl(210, 16%, 84%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -2914,7 +2680,7 @@
                     ],
                     "hsla(0, 0%, 0%, 0)",
                     8,
-                    "hsl(38, 18%, 77%)"
+                    "hsl(213, 26%, 60%)"
                 ],
                 "line-width": [
                     "interpolate",
@@ -2982,7 +2748,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(210, 15%, 86%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -3035,7 +2801,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsl(38, 18%, 85%)",
+                "line-color": "hsl(212, 29%, 74%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -3080,14 +2846,57 @@
             ],
             "paint": {
                 "line-color": [
-                    "match",
+                    "interpolate",
                     [
-                        "get",
-                        "class"
+                        "linear"
                     ],
-                    "maritime",
-                    "hsl(0, 0%, 100%)",
-                    "hsl(0, 0%, 46%)"
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 60%)"
+                    ],
+                    5,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 30%)"
+                    ],
+                    10,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 54%)"
+                    ],
+                    14,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 71%)"
+                    ]
                 ],
                 "line-width": [
                     "interpolate",
@@ -3241,7 +3050,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "hsl(0, 0%, 100%)",
+                "line-color": "hsl(202, 30%, 67%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -3381,8 +3190,8 @@
                 ]
             ],
             "paint": {
-                "fill-color": "hsl(31, 35%, 93%)",
-                "fill-outline-color": "hsl(31, 35%, 91%)"
+                "fill-color": "hsl(210, 16%, 89%)",
+                "fill-outline-color": "hsl(210, 15%, 86%)"
             }
         },
         {
@@ -3399,127 +3208,8 @@
                 "Polygon"
             ],
             "paint": {
-                "fill-color": "hsl(31, 35%, 91%)",
-                "fill-outline-color": "hsl(31, 35%, 89%)"
-            }
-        },
-        {
-            "id": "building-extrusion",
-            "type": "fill-extrusion",
-            "source": "buildings",
-            "source-layer": "building",
-            "minzoom": 14,
-            "filter": [
-                "all",
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "Polygon"
-                ],
-                [
-                    "!=",
-                    [
-                        "get",
-                        "has_parts"
-                    ],
-                    "true"
-                ]
-            ],
-            "paint": {
-                "fill-extrusion-color": "hsl(31, 30%, 87%)",
-                "fill-extrusion-base": [
-                    "max",
-                    [
-                        "coalesce",
-                        [
-                            "get",
-                            "min_height"
-                        ],
-                        0
-                    ],
-                    0
-                ],
-                "fill-extrusion-height": [
-                    "max",
-                    [
-                        "coalesce",
-                        [
-                            "get",
-                            "height"
-                        ],
-                        0
-                    ],
-                    0
-                ],
-                "fill-extrusion-opacity": [
-                    "interpolate",
-                    [
-                        "linear"
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    15,
-                    0.4,
-                    16,
-                    0.65
-                ]
-            }
-        },
-        {
-            "id": "bulding-part-extrusion",
-            "type": "fill-extrusion",
-            "source": "buildings",
-            "source-layer": "building_part",
-            "minzoom": 14,
-            "filter": [
-                "==",
-                [
-                    "geometry-type"
-                ],
-                "Polygon"
-            ],
-            "paint": {
-                "fill-extrusion-color": "hsl(31, 30%, 86%)",
-                "fill-extrusion-base": [
-                    "max",
-                    [
-                        "coalesce",
-                        [
-                            "get",
-                            "min_height"
-                        ],
-                        0
-                    ],
-                    0
-                ],
-                "fill-extrusion-height": [
-                    "max",
-                    [
-                        "coalesce",
-                        [
-                            "get",
-                            "height"
-                        ],
-                        0
-                    ],
-                    0
-                ],
-                "fill-extrusion-opacity": [
-                    "interpolate",
-                    [
-                        "linear"
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    15,
-                    0.4,
-                    16,
-                    0.65
-                ]
+                "fill-color": "hsl(210, 15%, 86%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
             }
         },
         {
@@ -3541,7 +3231,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsla(38, 38%, 80%, 0.7)",
+                "line-color": "hsl(0, 0%, 68%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -3581,7 +3271,7 @@
                 "rail"
             ],
             "paint": {
-                "line-color": "hsla(38, 38%, 80%, 0.7)",
+                "line-color": "hsl(0, 0%, 68%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -3621,7 +3311,7 @@
                 "line-join": "round"
             },
             "paint": {
-                "line-color": "hsla(210, 16%, 82%, 0.4)",
+                "line-color": "hsl(196, 56%, 76%)",
                 "line-width": [
                     "interpolate",
                     [
@@ -3683,7 +3373,7 @@
                 "symbol-spacing": 500
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
+                "text-color": "hsl(198, 40%, 55%)",
                 "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
                 "text-halo-width": 1
             }
@@ -3762,8 +3452,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -3834,8 +3524,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -3906,8 +3596,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -3980,8 +3670,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -4054,8 +3744,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -4128,8 +3818,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -4202,8 +3892,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -4276,8 +3966,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(211, 23%, 45%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -4334,8 +4024,8 @@
                 ]
             },
             "paint": {
-                "text-color": "hsl(38, 18%, 40%)",
-                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-color": "hsl(0, 0%, 54%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
                 "text-halo-width": 1
             }
         },
@@ -4346,16 +4036,38 @@
             "source-layer": "division",
             "maxzoom": 13,
             "filter": [
-                "in",
+                "all",
                 [
-                    "get",
-                    "subtype"
+                    "in",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "macrocounty",
+                            "county"
+                        ]
+                    ]
                 ],
                 [
-                    "literal",
+                    "<=",
                     [
-                        "macrocounty",
-                        "county"
+                        "length",
+                        [
+                            "get",
+                            "@name"
+                        ]
+                    ],
+                    [
+                        "step",
+                        [
+                            "zoom"
+                        ],
+                        12,
+                        10,
+                        999
                     ]
                 ]
             ],
@@ -4365,26 +4077,8 @@
                     "@name"
                 ],
                 "text-font": [
-                    "match",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "county",
-                    [
-                        "literal",
-                        [
-                            "Nunito Bold",
-                            "Noto Sans Bold"
-                        ]
-                    ],
-                    [
-                        "literal",
-                        [
-                            "Nunito Regular",
-                            "Noto Sans Regular"
-                        ]
-                    ]
+                    "Nunito Regular",
+                    "Noto Sans Regular"
                 ],
                 "text-size": [
                     "interpolate",
@@ -4402,8 +4096,8 @@
                             "subtype"
                         ],
                         "county",
-                        9,
-                        6
+                        9.5,
+                        8
                     ],
                     10,
                     [
@@ -4413,7 +4107,7 @@
                             "subtype"
                         ],
                         "county",
-                        12,
+                        11,
                         9
                     ],
                     12,
@@ -4424,30 +4118,20 @@
                             "subtype"
                         ],
                         "county",
-                        18,
-                        15
+                        12,
+                        10
                     ]
                 ],
-                "text-letter-spacing": 0.125,
-                "text-max-width": 8,
+                "text-letter-spacing": 0.1,
+                "text-max-width": 7,
+                "text-line-height": 1.3,
+                "text-padding": 6,
                 "text-allow-overlap": false
             },
             "paint": {
-                "text-color": [
-                    "interpolate",
-                    [
-                        "linear"
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    11,
-                    "hsl(0, 0%, 18%)",
-                    14,
-                    "hsl(0, 0%, 57%)"
-                ],
-                "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
-                "text-halo-width": 2
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+                "text-halo-width": 1.1
             }
         },
         {
@@ -4455,7 +4139,8 @@
             "type": "symbol",
             "source": "divisions",
             "source-layer": "division",
-            "minzoom": 9,
+            "minzoom": 11,
+            "maxzoom": 17,
             "filter": [
                 "all",
                 [
@@ -4470,7 +4155,6 @@
                             "localadmin",
                             "borough",
                             "macrohood",
-                            "macrohood",
                             "neighborhood",
                             "microhood"
                         ]
@@ -4481,15 +4165,6 @@
                     [
                         "zoom"
                     ],
-                    [
-                        "==",
-                        [
-                            "get",
-                            "subtype"
-                        ],
-                        "borough"
-                    ],
-                    10,
                     [
                         "in",
                         [
@@ -4504,7 +4179,7 @@
                             ]
                         ]
                     ],
-                    11,
+                    12,
                     [
                         "in",
                         [
@@ -4520,7 +4195,7 @@
                             ]
                         ]
                     ],
-                    13,
+                    14,
                     [
                         "in",
                         [
@@ -4537,7 +4212,7 @@
                             ]
                         ]
                     ],
-                    14,
+                    15,
                     true
                 ]
             ],
@@ -4571,6 +4246,7 @@
                         ]
                     ]
                 ],
+                "text-transform": "uppercase",
                 "text-size": [
                     "interpolate",
                     [
@@ -4579,7 +4255,7 @@
                     [
                         "zoom"
                     ],
-                    10,
+                    11,
                     [
                         "match",
                         [
@@ -4591,8 +4267,8 @@
                             "borough",
                             "macrohood"
                         ],
-                        18,
-                        14
+                        12,
+                        10
                     ],
                     13,
                     [
@@ -4606,30 +4282,35 @@
                             "borough",
                             "macrohood"
                         ],
-                        22,
-                        18
+                        14,
+                        11.5
+                    ],
+                    15,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "localadmin",
+                            "borough",
+                            "macrohood"
+                        ],
+                        16,
+                        13
                     ]
                 ],
-                "text-letter-spacing": 0.1,
-                "text-max-width": 8,
+                "text-letter-spacing": 0.15,
+                "text-max-width": 7,
+                "text-line-height": 1.3,
+                "text-padding": 8,
                 "text-allow-overlap": false
             },
             "paint": {
-                "text-color": [
-                    "interpolate",
-                    [
-                        "linear"
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    11,
-                    "hsl(0, 0%, 18%)",
-                    14,
-                    "hsl(0, 0%, 57%)"
-                ],
+                "text-color": "hsl(0, 0%, 46%)",
                 "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
-                "text-halo-width": 1.5
+                "text-halo-width": 1.2
             }
         },
         {
@@ -4637,7 +4318,7 @@
             "type": "symbol",
             "source": "divisions",
             "source-layer": "division",
-            "maxzoom": 11,
+            "maxzoom": 10,
             "filter": [
                 "all",
                 [
@@ -4668,10 +4349,10 @@
                         [
                             "zoom"
                         ],
-                        15,
-                        6,
+                        5,
+                        7,
                         30,
-                        8,
+                        9,
                         999
                     ]
                 ]
@@ -4682,26 +4363,8 @@
                     "@name"
                 ],
                 "text-font": [
-                    "match",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "region",
-                    [
-                        "literal",
-                        [
-                            "Nunito Bold",
-                            "Noto Sans Bold"
-                        ]
-                    ],
-                    [
-                        "literal",
-                        [
-                            "Nunito Regular",
-                            "Noto Sans Regular"
-                        ]
-                    ]
+                    "Nunito Regular",
+                    "Noto Sans Regular"
                 ],
                 "text-size": [
                     "interpolate",
@@ -4711,7 +4374,7 @@
                     [
                         "zoom"
                     ],
-                    4,
+                    6,
                     [
                         "match",
                         [
@@ -4719,10 +4382,10 @@
                             "subtype"
                         ],
                         "region",
-                        9,
-                        6
+                        10,
+                        8
                     ],
-                    9,
+                    8,
                     [
                         "match",
                         [
@@ -4730,10 +4393,10 @@
                             "subtype"
                         ],
                         "region",
-                        15,
-                        12
+                        11.5,
+                        9.5
                     ],
-                    12,
+                    10,
                     [
                         "match",
                         [
@@ -4741,29 +4404,19 @@
                             "subtype"
                         ],
                         "region",
-                        21,
-                        18
+                        13,
+                        11
                     ]
                 ],
                 "text-letter-spacing": 0.15,
                 "text-max-width": 6,
+                "text-line-height": 1.3,
+                "text-padding": 6,
                 "text-allow-overlap": false
             },
             "paint": {
-                "text-color": [
-                    "interpolate",
-                    [
-                        "linear"
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    11,
-                    "hsl(0, 0%, 18%)",
-                    14,
-                    "hsl(0, 0%, 57%)"
-                ],
-                "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
+                "text-color": "hsl(0, 0%, 54%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
                 "text-halo-width": 1.1
             }
         },
@@ -4772,14 +4425,39 @@
             "type": "symbol",
             "source": "divisions",
             "source-layer": "division",
-            "maxzoom": 14,
+            "maxzoom": 16,
             "filter": [
-                "==",
+                "all",
                 [
-                    "get",
-                    "subtype"
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "locality"
                 ],
-                "locality"
+                [
+                    ">=",
+                    [
+                        "to-number",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        0
+                    ],
+                    [
+                        "step",
+                        [
+                            "zoom"
+                        ],
+                        0,
+                        12,
+                        25,
+                        14,
+                        70
+                    ]
+                ]
             ],
             "layout": {
                 "text-field": [
@@ -4830,8 +4508,8 @@
                             ],
                             70
                         ],
-                        16,
-                        14
+                        18,
+                        11
                     ],
                     12,
                     [
@@ -4844,8 +4522,8 @@
                             ],
                             50
                         ],
-                        24,
-                        20
+                        20,
+                        12.5
                     ],
                     14,
                     [
@@ -4856,32 +4534,54 @@
                                 "get",
                                 "@prominence"
                             ],
-                            30
+                            70
                         ],
-                        28,
-                        24
+                        24,
+                        14
                     ]
                 ],
-                "text-letter-spacing": 0.2,
+                "text-letter-spacing": 0,
                 "text-max-width": 6,
+                "text-padding": 6,
                 "text-allow-overlap": false
             },
             "paint": {
                 "text-color": [
-                    "interpolate",
+                    "case",
                     [
-                        "linear"
+                        ">=",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        70
                     ],
+                    "hsl(0, 0%, 13%)",
                     [
-                        "zoom"
+                        ">=",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        40
                     ],
-                    11,
-                    "hsl(0, 0%, 18%)",
-                    14,
-                    "hsl(0, 0%, 57%)"
+                    "hsl(0, 0%, 24%)",
+                    "hsl(0, 0%, 30%)"
                 ],
-                "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
-                "text-halo-width": 1.5
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": [
+                    "case",
+                    [
+                        ">=",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        70
+                    ],
+                    1.8,
+                    1.2
+                ]
             }
         },
         {
@@ -4936,26 +4636,8 @@
                     "@name"
                 ],
                 "text-font": [
-                    "match",
-                    [
-                        "get",
-                        "subtype"
-                    ],
-                    "country",
-                    [
-                        "literal",
-                        [
-                            "Nunito Bold",
-                            "Noto Sans Bold"
-                        ]
-                    ],
-                    [
-                        "literal",
-                        [
-                            "Nunito Bold",
-                            "Noto Sans Bold"
-                        ]
-                    ]
+                    "Nunito Bold",
+                    "Noto Sans Bold"
                 ],
                 "text-size": [
                     "interpolate",
@@ -4973,8 +4655,8 @@
                             "subtype"
                         ],
                         "country",
-                        10,
-                        7
+                        11,
+                        9
                     ],
                     4,
                     [
@@ -4984,10 +4666,10 @@
                             "subtype"
                         ],
                         "country",
-                        13,
-                        10
+                        14,
+                        11
                     ],
-                    9,
+                    6,
                     [
                         "match",
                         [
@@ -4995,27 +4677,31 @@
                             "subtype"
                         ],
                         "country",
-                        19,
+                        17,
+                        13
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "country",
+                        20,
                         16
-                    ],
-                    12,
-                    [
-                        "match",
-                        [
-                            "get",
-                            "subtype"
-                        ],
-                        "country",
-                        25,
-                        22
                     ]
                 ],
-                "text-letter-spacing": 0.2,
-                "text-max-width": 8,
+                "text-letter-spacing": 0,
+                "text-max-width": 7,
+                "text-line-height": 1.15,
+                "text-padding": 4,
                 "text-allow-overlap": false
             },
             "paint": {
-                "text-color": [
+                "text-color": "hsl(0, 0%, 13%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": [
                     "interpolate",
                     [
                         "linear"
@@ -5023,13 +4709,13 @@
                     [
                         "zoom"
                     ],
-                    11,
-                    "hsl(0, 0%, 18%)",
-                    14,
-                    "hsl(0, 0%, 57%)"
-                ],
-                "text-halo-color": "hsla(0, 0%, 100%, 0.8)",
-                "text-halo-width": 1.2
+                    2,
+                    1.2,
+                    6,
+                    1.6,
+                    8,
+                    2
+                ]
             }
         }
     ]
