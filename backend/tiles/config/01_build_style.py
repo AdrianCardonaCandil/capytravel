@@ -7,7 +7,7 @@ from typing import TypeAlias, cast
 # Route configuration
 base_dir = Path("../")
 style_file = base_dir / 'style.json'
-layers_dir = base_dir / 'style'
+layers_dir = base_dir / 'layers'
 
 # Type definitions
 JSONValue: TypeAlias = (
