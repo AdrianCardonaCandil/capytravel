@@ -25,7 +25,7 @@ select
     to_json(taxonomy) as taxonomy,
     brand,
     to_json(address) as address
-from read_parquet('../parquet_extract/place.parquet');
+from read_parquet('../data/extract/place.parquet');
 
 truncate table overture_es.addresses.address;
 insert into overture_es.addresses.address
@@ -39,7 +39,7 @@ select
     country,
     postcode,
     null as hierarchy
-from read_parquet('../parquet_extract/address.parquet');
+from read_parquet('../data/extract/address.parquet');
 
 truncate table overture_es.base.infrastructure;
 insert into overture_es.base.infrastructure
@@ -54,7 +54,7 @@ select
     surface,
     to_json(tags) as tags,
     null as hierarchy
-from read_parquet('../parquet_extract/infrastructure.parquet');
+from read_parquet('../data/extract/infrastructure.parquet');
 
 truncate table overture_es.divisions.division_area;
 truncate table overture_es.divisions.division;
@@ -77,7 +77,7 @@ select
     to_json(capital_of) as capital_of,
     to_json(cartography) as cartography,
     wikidata
-from read_parquet('../parquet_extract/division.parquet');
+from read_parquet('../data/extract/division.parquet');
 
 insert into overture_es.divisions.division_area
 select
@@ -91,4 +91,4 @@ select
     division_id,
     country,
     region
-from read_parquet('../parquet_extract/division_area.parquet');
+from read_parquet('../data/extract/division_area.parquet');

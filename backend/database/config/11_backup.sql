@@ -22,7 +22,7 @@ copy (
         brand,
         address
     from overture_es.places.place
-) to '../parquet/backup/place.parquet' (format parquet);
+) to '../data/backup/place.parquet' (format parquet);
 
 copy (
     select
@@ -36,7 +36,7 @@ copy (
         country,
         hierarchy
     from overture_es.addresses.address
-) to '../parquet/backup/address.parquet' (format parquet);
+) to '../data/backup/address.parquet' (format parquet);
 
 copy (
     select
@@ -51,7 +51,7 @@ copy (
         tags,
         hierarchy
     from overture_es.base.infrastructure
-) to '../parquet/backup/infrastructure.parquet' (format parquet);
+) to '../data/backup/infrastructure.parquet' (format parquet);
 
 copy (
     select
@@ -72,7 +72,7 @@ copy (
         cartography,
         wikidata
     from overture_es.divisions.division
-) to '../parquet/backup/division.parquet' (format parquet);
+) to '../data/backup/division.parquet' (format parquet);
 
 copy (
     select
@@ -87,4 +87,4 @@ copy (
         country,
         region
     from overture_es.divisions.division_area
-) to '../parquet/backup/division_area.parquet' (format parquet);
+) to '../data/backup/division_area.parquet' (format parquet);
