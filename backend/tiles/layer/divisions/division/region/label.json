@@ -70,8 +70,8 @@
         "text-allow-overlap": false
     },
     "paint": {
-        "text-color": "hsl(0, 0%, 54%)",
-        "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+        "text-color": "$ink.500",
+        "text-halo-color": "$white.400",
         "text-halo-width": 1.1
     }
 }

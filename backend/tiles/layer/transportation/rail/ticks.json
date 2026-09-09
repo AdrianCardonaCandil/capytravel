@@ -10,7 +10,7 @@
         "rail"
     ],
     "paint": {
-        "line-color": "hsl(0, 0%, 68%)",
+        "line-color": "$ink.300",
         "line-width": [
             "interpolate",
             ["exponential", 1.5],

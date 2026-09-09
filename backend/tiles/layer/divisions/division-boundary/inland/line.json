@@ -27,32 +27,32 @@
                 "match",
                 ["get", "class"],
                 "maritime",
-                "hsl(202, 30%, 67%)",
-                "hsl(0, 0%, 60%)"
+                "$water.maritime",
+                "$ink.400"
             ],
             5,
             [
                 "match",
                 ["get", "class"],
                 "maritime",
-                "hsl(202, 30%, 67%)",
-                "hsl(0, 0%, 30%)"
+                "$water.maritime",
+                "$ink.700"
             ],
             10,
             [
                 "match",
                 ["get", "class"],
                 "maritime",
-                "hsl(202, 30%, 67%)",
-                "hsl(0, 0%, 54%)"
+                "$water.maritime",
+                "$ink.500"
             ],
             14,
             [
                 "match",
                 ["get", "class"],
                 "maritime",
-                "hsl(202, 30%, 67%)",
-                "hsl(0, 0%, 71%)"
+                "$water.maritime",
+                "$ink.200"
             ]
         ],
         "line-width": [

@@ -47,8 +47,8 @@
         ]
     },
     "paint": {
-        "text-color": "hsl(211, 23%, 45%)",
-        "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+        "text-color": "$roadblue.400",
+        "text-halo-color": "$white.200",
         "text-halo-width": 1
     }
 }

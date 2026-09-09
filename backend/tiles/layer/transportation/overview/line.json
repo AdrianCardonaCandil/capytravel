@@ -12,9 +12,9 @@
         "line-color": [
             "step",
             ["zoom"],
-            "transparent",
+            "$transparent",
             8,
-            "hsl(210, 15%, 86%)"
+            "$urban.400"
         ],
         "line-width": [
             "interpolate",

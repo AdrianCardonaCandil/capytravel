@@ -34,8 +34,8 @@
         ]
     },
     "paint": {
-        "text-color": "hsl(0, 0%, 54%)",
-        "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+        "text-color": "$ink.500",
+        "text-halo-color": "$white.200",
         "text-halo-width": 1
     }
 }

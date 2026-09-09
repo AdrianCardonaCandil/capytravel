@@ -13,7 +13,7 @@
         ]
     ],
     "paint": {
-        "line-color": "hsl(202, 30%, 67%)",
+        "line-color": "$water.maritime",
         "line-width": [
             "interpolate",
             ["linear"],

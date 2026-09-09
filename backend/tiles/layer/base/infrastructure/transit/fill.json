@@ -26,7 +26,7 @@
         ]
     ],
     "paint": {
-        "fill-color": "hsl(210, 31%, 91%)",
-        "fill-outline-color": "hsl(212, 30%, 85%)"
+        "fill-color": "$skyport.100",
+        "fill-outline-color": "$skyport.300"
     }
 }

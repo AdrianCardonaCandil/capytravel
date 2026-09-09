@@ -37,9 +37,9 @@
         "line-color": [
             "step",
             ["zoom"],
-            "hsla(0, 0%, 0%, 0)",
+            "$transparent",
             8,
-            "hsl(213, 26%, 60%)"
+            "$roadblue.300"
         ],
         "line-width": [
             "interpolate",

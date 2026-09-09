@@ -34,7 +34,7 @@
         ]
     },
     "paint": {
-        "fill-color": "hsl(110, 38%, 84%)",
-        "fill-outline-color": "hsl(111, 41%, 83%)"
+        "fill-color": "$vegetation.200",
+        "fill-outline-color": "$vegetation.300"
     }
 }

@@ -94,16 +94,16 @@
                 ["get", "@prominence"],
                 70
             ],
-            "hsl(0, 0%, 13%)",
+            "$ink.900",
             [
                 ">=",
                 ["get", "@prominence"],
                 40
             ],
-            "hsl(0, 0%, 24%)",
-            "hsl(0, 0%, 30%)"
+            "$ink.800",
+            "$ink.700"
         ],
-        "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+        "text-halo-color": "$white.200",
         "text-halo-width": [
             "case",
             [

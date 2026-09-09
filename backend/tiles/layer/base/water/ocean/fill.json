@@ -17,8 +17,8 @@
         ]
     ],
     "paint": {
-        "fill-color": "hsl(196, 40%, 64%)",
+        "fill-color": "$water.1000",
         "fill-opacity": 1,
-        "fill-outline-color": "transparent"
+        "fill-outline-color": "$transparent"
     }
 }

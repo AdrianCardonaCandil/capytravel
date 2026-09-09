@@ -41,15 +41,15 @@
             "match",
             ["get", "class"],
             "golf_course",
-            "hsl(111, 41%, 83%)",
-            "hsl(110, 38%, 84%)"
+            "$vegetation.300",
+            "$vegetation.200"
         ],
         "fill-outline-color": [
             "match",
             ["get", "class"],
             "golf_course",
-            "hsl(112, 44%, 81%)",
-            "hsl(111, 41%, 83%)"
+            "$vegetation.400",
+            "$vegetation.300"
         ]
     }
 }

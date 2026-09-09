@@ -26,8 +26,8 @@
         "symbol-spacing": 500
     },
     "paint": {
-        "text-color": "hsl(198, 40%, 55%)",
-        "text-halo-color": "hsla(0, 0%, 100%, 0.7)",
+        "text-color": "$water.label",
+        "text-halo-color": "$white.400",
         "text-halo-width": 1
     }
 }

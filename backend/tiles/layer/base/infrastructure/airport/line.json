@@ -30,7 +30,7 @@
         "line-join": "round"
     },
     "paint": {
-        "line-color": "hsl(0, 0%, 60%)",
+        "line-color": "$ink.400",
         "line-width": [
             "interpolate",
             ["exponential", 1.5],

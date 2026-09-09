@@ -14,7 +14,7 @@
         "line-join": "round"
     },
     "paint": {
-        "line-color": "hsl(196, 56%, 76%)",
+        "line-color": "$water.200",
         "line-width": [
             "interpolate",
             ["exponential", 1.5],

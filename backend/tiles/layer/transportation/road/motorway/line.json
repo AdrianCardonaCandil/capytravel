@@ -22,7 +22,7 @@
         "line-join": "round"
     },
     "paint": {
-        "line-color": "hsl(212, 29%, 74%)",
+        "line-color": "$roadblue.100",
         "line-width": [
             "interpolate",
             ["exponential", 1.5],

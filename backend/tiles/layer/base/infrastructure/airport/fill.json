@@ -39,15 +39,15 @@
             "match",
             ["get", "class"],
             ["runway", "taxiway"],
-            "hsl(210, 15%, 91%)",
-            "hsl(210, 31%, 91%)"
+            "$urban.200",
+            "$skyport.100"
         ],
         "fill-outline-color": [
             "match",
             ["get", "class"],
             ["runway", "taxiway"],
-            "hsl(0, 0%, 60%)",
-            "hsl(212, 30%, 85%)"
+            "$ink.400",
+            "$skyport.300"
         ]
     }
 }

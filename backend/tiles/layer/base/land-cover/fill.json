@@ -39,24 +39,24 @@
             "match",
             ["get", "subtype"],
             "barren",
-            "hsl(46, 48%, 88%)",
+            "$cream.200",
             "crop",
-            "hsl(108, 30%, 88%)",
+            "$vegetation.100",
             "forest",
-            "hsl(112, 44%, 81%)",
+            "$vegetation.400",
             "grass",
-            "hsl(111, 41%, 83%)",
+            "$vegetation.300",
             "mangrove",
-            "hsl(112, 44%, 81%)",
+            "$vegetation.400",
             "moss",
-            "hsl(114, 46%, 79%)",
+            "$vegetation.500",
             "shrub",
-            "hsl(110, 38%, 84%)",
+            "$vegetation.200",
             "snow",
-            "hsl(0, 0%, 98%)",
+            "$ice.100",
             "wetland",
-            "hsl(111, 41%, 83%)",
-            "transparent"
+            "$vegetation.300",
+            "$transparent"
         ],
         "fill-opacity": [
             "interpolate",
@@ -71,6 +71,6 @@
             13,
             0
         ],
-        "fill-outline-color": "transparent"
+        "fill-outline-color": "$transparent"
     }
 }
