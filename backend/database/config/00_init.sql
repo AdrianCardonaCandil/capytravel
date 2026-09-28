@@ -49,7 +49,7 @@ create table if not exists addresses.address (
     number text,
     unit text,
     postcode text,
-    country text
+    country text,
     hierarchy jsonb
 );
 

@@ -5,7 +5,7 @@ load spatial;
 load httpfs;
 
 -- Constants
-set variable last_release = '2026-08-19.0/';
+set variable last_release = '2026-09-23.0/';
 set variable base_url = 's3://overturemaps-us-west-2/release/' || getvariable('last_release');
 set variable country_code = 'ES';
 
