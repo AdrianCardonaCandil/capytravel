@@ -1,0 +1,107 @@
+{
+    "id": "division-local-label",
+    "type": "symbol",
+    "source": "divisions",
+    "source-layer": "division",
+    "minzoom": 11,
+    "maxzoom": 17,
+    "filter": [
+        "all",
+        [
+            "in",
+            ["get", "subtype"],
+            [
+                "literal",
+                ["localadmin", "borough", "macrohood", "neighborhood", "microhood"]
+            ]
+        ],
+        [
+            "step",
+            ["zoom"],
+            [
+                "in",
+                ["get", "subtype"],
+                [
+                    "literal",
+                    ["borough", "localadmin"]
+                ]
+            ],
+            12,
+            [
+                "in",
+                ["get", "subtype"],
+                [
+                    "literal",
+                    ["borough", "localadmin", "macrohood"]
+                ]
+            ],
+            14,
+            [
+                "in",
+                ["get", "subtype"],
+                [
+                    "literal",
+                    ["borough", "localadmin", "macrohood", "neighborhood"]
+                ]
+            ],
+            15,
+            true
+        ]
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": [
+            "match",
+            ["get", "subtype"],
+            ["localadmin", "borough"],
+            [
+                "literal",
+                ["Nunito Medium", "Noto Sans Medium"]
+            ],
+            [
+                "literal",
+                ["Nunito Regular", "Noto Sans Regular"]
+            ]
+        ],
+        "text-transform": "uppercase",
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            11,
+            [
+                "match",
+                ["get", "subtype"],
+                ["localadmin", "borough", "macrohood"],
+                12,
+                10
+            ],
+            13,
+            [
+                "match",
+                ["get", "subtype"],
+                ["localadmin", "borough", "macrohood"],
+                14,
+                11.5
+            ],
+            15,
+            [
+                "match",
+                ["get", "subtype"],
+                ["localadmin", "borough", "macrohood"],
+                16,
+                13
+            ]
+        ],
+        "text-letter-spacing": 0.15,
+        "text-max-width": 7,
+        "text-line-height": 1.3,
+        "text-padding": 8,
+        "text-allow-overlap": false
+    },
+    "paint": {
+        "text-color": "$ink.600",
+        "text-halo-color": "$white.300",
+        "text-halo-width": 1.2
+    }
+}

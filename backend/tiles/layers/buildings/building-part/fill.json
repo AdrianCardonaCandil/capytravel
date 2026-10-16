@@ -1,0 +1,16 @@
+{
+    "id": "building-part-fill",
+    "type": "fill",
+    "source": "buildings",
+    "source-layer": "building_part",
+    "minzoom": 14,
+    "filter": [
+        "==",
+        ["geometry-type"],
+        "Polygon"
+    ],
+    "paint": {
+        "fill-color": "$urban.400",
+        "fill-outline-color": "$urban.500"
+    }
+}
