@@ -1,0 +1,53 @@
+{
+    "id": "infrastructure-airport-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "airport"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["international_airport", "military_airport", "municipal_airport", "private_airport", "regional_airport", "airport", "runway", "taxiway"]
+            ]
+        ]
+    ],
+    "layout": {
+        "fill-sort-key": [
+            "match",
+            ["get", "class"],
+            ["runway", "taxiway"],
+            2,
+            1
+        ]
+    },
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "class"],
+            ["runway", "taxiway"],
+            "$urban.200",
+            "$skyport.100"
+        ],
+        "fill-outline-color": [
+            "match",
+            ["get", "class"],
+            ["runway", "taxiway"],
+            "$ink.400",
+            "$skyport.300"
+        ]
+    }
+}

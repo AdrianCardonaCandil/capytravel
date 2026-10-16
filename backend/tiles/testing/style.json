@@ -1,0 +1,4722 @@
+{
+    "version": 8,
+    "name": "bright",
+    "metadata": {
+        "root:author": "Adrian Cardona Candil",
+        "root:description": "Test stylesheet for a bright theme map display"
+    },
+    "glyphs": "http://localhost:3000/font/{fontstack}/{range}",
+    "center": [
+        0,
+        0
+    ],
+    "projection": {
+        "type": "globe"
+    },
+    "zoom": 2.5,
+    "sources": {
+        "base": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/base/{z}/{x}/{y}"
+            ],
+            "maxzoom": 13
+        },
+        "buildings": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/buildings/{z}/{x}/{y}"
+            ],
+            "maxzoom": 14
+        },
+        "divisions": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/divisions/{z}/{x}/{y}"
+            ],
+            "maxzoom": 12
+        },
+        "transportation": {
+            "type": "vector",
+            "tiles": [
+                "http://localhost:3000/transportation/{z}/{x}/{y}"
+            ],
+            "maxzoom": 14
+        }
+    },
+    "layers": [
+        {
+            "id": "water-ocean-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "ocean"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(196, 40%, 64%)",
+                "fill-opacity": 1,
+                "fill-outline-color": "hsla(0, 0%, 0%, 0)"
+            }
+        },
+        {
+            "id": "land-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "any",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "land"
+                    ],
+                    [
+                        "!",
+                        [
+                            "has",
+                            "subtype"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(45, 30%, 92%)",
+                "fill-outline-color": "hsla(0, 0%, 0%, 0)"
+            }
+        },
+        {
+            "id": "land-use-protected-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "protected"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "nature_reserve",
+                            "national_park",
+                            "protected_landscape_seascape"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(111, 41%, 83%)",
+                "fill-outline-color": "hsl(112, 44%, 81%)"
+            }
+        },
+        {
+            "id": "land-use-residential-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "residential"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "residential"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 12%, 94%)",
+                "fill-outline-color": "hsl(210, 15%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-developed-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "developed"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "industrial",
+                            "warehouse"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 12%, 94%)",
+                "fill-outline-color": "hsl(210, 15%, 91%)"
+            }
+        },
+        {
+            "id": "land-use-park-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "park"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "park",
+                            "dog_park",
+                            "village_green"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(111, 41%, 83%)",
+                "fill-outline-color": "hsl(112, 44%, 81%)"
+            }
+        },
+        {
+            "id": "land-use-golf-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "golf"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "golf_course",
+                            "fairway",
+                            "rough"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "golf_course",
+                    1,
+                    "rough",
+                    2,
+                    3
+                ]
+            },
+            "paint": {
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "golf_course",
+                    "hsl(111, 41%, 83%)",
+                    "hsl(110, 38%, 84%)"
+                ],
+                "fill-outline-color": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "golf_course",
+                    "hsl(112, 44%, 81%)",
+                    "hsl(111, 41%, 83%)"
+                ]
+            }
+        },
+        {
+            "id": "land-use-campground-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "campground"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "camp_site"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
+            }
+        },
+        {
+            "id": "land-use-horticulture-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "horticulture"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "orchard",
+                            "garden",
+                            "flowerbed",
+                            "vineyard"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
+            }
+        },
+        {
+            "id": "land-use-military-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "military"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "military",
+                            "base",
+                            "naval_base"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
+            }
+        },
+        {
+            "id": "land-use-recreation-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "recreation"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "pitch",
+                            "recreation_ground",
+                            "playground",
+                            "track"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "recreation_ground",
+                    1,
+                    2
+                ]
+            },
+            "paint": {
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
+            }
+        },
+        {
+            "id": "land-use-education-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "education"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "college",
+                            "university"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(273, 30%, 93%)",
+                "fill-outline-color": "hsl(273, 32%, 89%)"
+            }
+        },
+        {
+            "id": "land-use-medical-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "medical"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "hospital"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(5, 75%, 93%)",
+                "fill-outline-color": "hsl(5, 66%, 90%)"
+            }
+        },
+        {
+            "id": "land-use-cemetery-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_use",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "cemetery"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "cemetery",
+                            "graveyard"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(110, 38%, 84%)",
+                "fill-outline-color": "hsl(111, 41%, 83%)"
+            }
+        },
+        {
+            "id": "land-cover-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "land_cover",
+            "maxzoom": 13,
+            "filter": [
+                "==",
+                [
+                    "geometry-type"
+                ],
+                "Polygon"
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "forest",
+                    1,
+                    "barren",
+                    2,
+                    "shrub",
+                    3,
+                    "grass",
+                    4,
+                    "crop",
+                    5,
+                    "wetland",
+                    6,
+                    "mangrove",
+                    7,
+                    "moss",
+                    8,
+                    "snow",
+                    9,
+                    0
+                ]
+            },
+            "paint": {
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "barren",
+                    "hsl(46, 48%, 88%)",
+                    "crop",
+                    "hsl(108, 30%, 88%)",
+                    "forest",
+                    "hsl(112, 44%, 81%)",
+                    "grass",
+                    "hsl(111, 41%, 83%)",
+                    "mangrove",
+                    "hsl(112, 44%, 81%)",
+                    "moss",
+                    "hsl(114, 46%, 79%)",
+                    "shrub",
+                    "hsl(110, 38%, 84%)",
+                    "snow",
+                    "hsl(0, 0%, 98%)",
+                    "wetland",
+                    "hsl(111, 41%, 83%)",
+                    "hsla(0, 0%, 0%, 0)"
+                ],
+                "fill-opacity": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    0,
+                    1,
+                    6,
+                    1,
+                    11,
+                    0.2,
+                    13,
+                    0
+                ],
+                "fill-outline-color": "hsla(0, 0%, 0%, 0)"
+            }
+        },
+        {
+            "id": "water-continent-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "!",
+                    [
+                        "in",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "ocean",
+                                "physical"
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    2,
+                    1
+                ]
+            },
+            "paint": {
+                "fill-color": "hsl(196, 56%, 76%)",
+                "fill-opacity": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    0.25,
+                    1
+                ],
+                "fill-outline-color": "hsla(0, 0%, 0%, 0)"
+            }
+        },
+        {
+            "id": "water-continent-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "has",
+                    "subtype"
+                ]
+            ],
+            "layout": {
+                "line-sort-key": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    2,
+                    1
+                ],
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(196, 56%, 76%)",
+                "line-width": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        false
+                    ],
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "river",
+                        1,
+                        0.5
+                    ],
+                    1
+                ],
+                "line-opacity": [
+                    "case",
+                    [
+                        "==",
+                        [
+                            "get",
+                            "is_intermittent"
+                        ],
+                        true
+                    ],
+                    0.25,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "water-continent-label",
+            "type": "symbol",
+            "source": "base",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "has",
+                    "subtype"
+                ],
+                [
+                    "!",
+                    [
+                        "has",
+                        "is_intermittent"
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Italic",
+                    "Noto Sans Italic"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    10,
+                    13.5,
+                    14,
+                    16.5
+                ],
+                "symbol-placement": "line",
+                "symbol-spacing": 500,
+                "text-max-angle": 25
+            },
+            "paint": {
+                "text-color": "hsl(198, 40%, 55%)"
+            }
+        },
+        {
+            "id": "infrastructure-airport-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "international_airport",
+                            "military_airport",
+                            "municipal_airport",
+                            "private_airport",
+                            "regional_airport",
+                            "airport",
+                            "runway",
+                            "taxiway"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "fill-sort-key": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "runway",
+                        "taxiway"
+                    ],
+                    2,
+                    1
+                ]
+            },
+            "paint": {
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "runway",
+                        "taxiway"
+                    ],
+                    "hsl(210, 15%, 91%)",
+                    "hsl(210, 31%, 91%)"
+                ],
+                "fill-outline-color": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "runway",
+                        "taxiway"
+                    ],
+                    "hsl(0, 0%, 60%)",
+                    "hsl(212, 30%, 85%)"
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-airport-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "airport"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "runway",
+                            "taxiway"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 60%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.5,
+                    16,
+                    2,
+                    20,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-water-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "water"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "dam",
+                            "fountain",
+                            "weir"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
+            }
+        },
+        {
+            "id": "infrastructure-water-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "water"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "dam",
+                            "fountain",
+                            "weir"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 91%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    1,
+                    16,
+                    3,
+                    20,
+                    6
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-quay-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "quay"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "quay"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
+            }
+        },
+        {
+            "id": "infrastructure-quay-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "quay"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "quay"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 91%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    1,
+                    16,
+                    3,
+                    20,
+                    6
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-pier-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "pier"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "pier"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 15%, 91%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
+            }
+        },
+        {
+            "id": "infrastructure-pier-line",
+            "type": "line",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "LineString"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "pier"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "pier"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 91%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    1,
+                    16,
+                    3,
+                    20,
+                    6
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-transit-fill",
+            "type": "fill",
+            "source": "base",
+            "source-layer": "infrastructure",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "transit"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "bus_station",
+                            "ferry_terminal",
+                            "railway_station",
+                            "subway_station"
+                        ]
+                    ]
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 31%, 91%)",
+                "fill-outline-color": "hsl(212, 30%, 85%)"
+            }
+        },
+        {
+            "id": "overview-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "maxzoom": 14,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    8,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    0.3,
+                    13,
+                    0.8
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.25,
+                    10,
+                    1,
+                    13,
+                    2
+                ],
+                "line-opacity": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.7,
+                    10,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "overview-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "maxzoom": 14,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    8,
+                    "hsl(210, 15%, 86%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.25,
+                    10,
+                    1,
+                    13,
+                    2
+                ],
+                "line-opacity": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    0,
+                    4,
+                    0.7,
+                    10,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "road-pedestrian-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "pedestrian",
+                            "footway",
+                            "path",
+                            "track",
+                            "cycleway",
+                            "bridleway"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    18,
+                    "hsla(0, 0%, 0%, 0)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.5,
+                    18,
+                    1,
+                    22,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0,
+                    18,
+                    6,
+                    22,
+                    80
+                ]
+            }
+        },
+        {
+            "id": "road-other-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "unclassified",
+                            "service",
+                            "unknown"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    12,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.5,
+                    18,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    16,
+                    2,
+                    20,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "road-living-street-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "living_street"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    14,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    0.2,
+                    14,
+                    0.6,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "road-residential-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "residential"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    14,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    14,
+                    0.8,
+                    16,
+                    3,
+                    20,
+                    6
+                ]
+            }
+        },
+        {
+            "id": "road-tertiary-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "tertiary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    14,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    0.2,
+                    12,
+                    1,
+                    16,
+                    4,
+                    20,
+                    8
+                ]
+            }
+        },
+        {
+            "id": "road-secondary-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "secondary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    12,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    0.8,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    9,
+                    0.3,
+                    12,
+                    1.5,
+                    16,
+                    5,
+                    20,
+                    10
+                ]
+            }
+        },
+        {
+            "id": "road-primary-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "primary"
+                ]
+            ],
+            "layout": {
+                "line-cap": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "butt",
+                    16,
+                    "round"
+                ],
+                "line-join": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "miter",
+                    16,
+                    "round"
+                ]
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    10,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    0.3,
+                    10,
+                    0.7,
+                    12,
+                    2,
+                    16,
+                    6,
+                    20,
+                    12
+                ]
+            }
+        },
+        {
+            "id": "road-steps-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "steps"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 91%)",
+                "line-dasharray": [
+                    0.5,
+                    0.25
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0,
+                    18,
+                    6,
+                    22,
+                    80
+                ]
+            }
+        },
+        {
+            "id": "road-pedestrian-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "pedestrian",
+                            "footway",
+                            "path",
+                            "track",
+                            "cycleway",
+                            "bridleway"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 91%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0,
+                    18,
+                    6,
+                    22,
+                    80
+                ]
+            }
+        },
+        {
+            "id": "road-other-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "unclassified",
+                            "service",
+                            "unknown"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 86%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    16,
+                    2,
+                    20,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "road-living-street-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "living_street"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 86%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    0.2,
+                    14,
+                    0.6,
+                    16,
+                    2.5,
+                    20,
+                    5
+                ]
+            }
+        },
+        {
+            "id": "road-residential-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "residential"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 86%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.2,
+                    14,
+                    0.8,
+                    16,
+                    3,
+                    20,
+                    6
+                ]
+            }
+        },
+        {
+            "id": "road-tertiary-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "tertiary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 86%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    0.2,
+                    12,
+                    1,
+                    16,
+                    4,
+                    20,
+                    8
+                ]
+            }
+        },
+        {
+            "id": "road-secondary-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "secondary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 86%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    9,
+                    0.3,
+                    12,
+                    1.5,
+                    16,
+                    5,
+                    20,
+                    10
+                ]
+            }
+        },
+        {
+            "id": "road-primary-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "primary"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 86%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    7,
+                    0.3,
+                    10,
+                    0.7,
+                    12,
+                    2,
+                    16,
+                    6,
+                    20,
+                    12
+                ]
+            }
+        },
+        {
+            "id": "road-trunk-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "trunk"
+                ]
+            ],
+            "layout": {
+                "line-cap": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "butt",
+                    13,
+                    "round"
+                ],
+                "line-join": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "miter",
+                    13,
+                    "round"
+                ]
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    8,
+                    "hsl(210, 16%, 84%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    0.4,
+                    8,
+                    0.8,
+                    12,
+                    2.5,
+                    16,
+                    7,
+                    20,
+                    14
+                ]
+            }
+        },
+        {
+            "id": "road-motorway-casing",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "motorway"
+                ]
+            ],
+            "layout": {
+                "line-cap": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "butt",
+                    13,
+                    "round"
+                ],
+                "line-join": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "miter",
+                    13,
+                    "round"
+                ]
+            },
+            "paint": {
+                "line-color": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    "hsla(0, 0%, 0%, 0)",
+                    8,
+                    "hsl(213, 26%, 60%)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    1,
+                    20,
+                    2
+                ],
+                "line-gap-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    4,
+                    0.5,
+                    8,
+                    1,
+                    12,
+                    3,
+                    16,
+                    8,
+                    20,
+                    16
+                ]
+            }
+        },
+        {
+            "id": "road-trunk-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "trunk"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(210, 15%, 86%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    0.4,
+                    8,
+                    0.8,
+                    12,
+                    2.5,
+                    16,
+                    7,
+                    20,
+                    14
+                ]
+            }
+        },
+        {
+            "id": "road-motorway-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "motorway"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(212, 29%, 74%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    3,
+                    16,
+                    8,
+                    20,
+                    16
+                ]
+            }
+        },
+        {
+            "id": "division-boundary-inland-line",
+            "type": "line",
+            "source": "divisions",
+            "source-layer": "division_boundary",
+            "filter": [
+                "all",
+                [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    true,
+                    8,
+                    [
+                        "!=",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime"
+                    ]
+                ]
+            ],
+            "paint": {
+                "line-color": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 60%)"
+                    ],
+                    5,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 30%)"
+                    ],
+                    10,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 54%)"
+                    ],
+                    14,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "class"
+                        ],
+                        "maritime",
+                        "hsl(202, 30%, 67%)",
+                        "hsl(0, 0%, 71%)"
+                    ]
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    3,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "country",
+                            "dependency"
+                        ],
+                        1,
+                        [
+                            "region",
+                            "macroregion"
+                        ],
+                        0.7,
+                        [
+                            "county",
+                            "macrocounty"
+                        ],
+                        0.5,
+                        0.1
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "country",
+                            "dependency"
+                        ],
+                        1.25,
+                        [
+                            "region",
+                            "macroregion"
+                        ],
+                        0.85,
+                        [
+                            "county",
+                            "macrocounty"
+                        ],
+                        0.65,
+                        0.15
+                    ],
+                    12,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "country",
+                            "dependency"
+                        ],
+                        1.75,
+                        [
+                            "region",
+                            "macroregion"
+                        ],
+                        1.25,
+                        [
+                            "county",
+                            "macrocounty"
+                        ],
+                        0.9,
+                        0.2
+                    ],
+                    16,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "country",
+                            "dependency"
+                        ],
+                        2,
+                        [
+                            "region",
+                            "macroregion"
+                        ],
+                        1.5,
+                        [
+                            "county",
+                            "macrocounty"
+                        ],
+                        1,
+                        0.2
+                    ]
+                ],
+                "line-opacity": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "country",
+                        "dependency"
+                    ],
+                    0.35,
+                    [
+                        "region",
+                        "macroregion"
+                    ],
+                    0.45,
+                    [
+                        "county",
+                        "macrocounty"
+                    ],
+                    0.55,
+                    0.5
+                ]
+            },
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            }
+        },
+        {
+            "id": "division-boundary-maritime-line",
+            "type": "line",
+            "source": "divisions",
+            "source-layer": "division_boundary",
+            "minzoom": 8,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "maritime"
+                ]
+            ],
+            "paint": {
+                "line-color": "hsl(202, 30%, 67%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "country",
+                            "dependency"
+                        ],
+                        1.5,
+                        [
+                            "region",
+                            "macroregion"
+                        ],
+                        1,
+                        [
+                            "county",
+                            "macrocounty"
+                        ],
+                        0.8,
+                        0.1
+                    ],
+                    12,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "country",
+                            "dependency"
+                        ],
+                        1.75,
+                        [
+                            "region",
+                            "macroregion"
+                        ],
+                        1.25,
+                        [
+                            "county",
+                            "macrocounty"
+                        ],
+                        0.9,
+                        0.15
+                    ],
+                    16,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "country",
+                            "dependency"
+                        ],
+                        2,
+                        [
+                            "region",
+                            "macroregion"
+                        ],
+                        1.5,
+                        [
+                            "county",
+                            "macrocounty"
+                        ],
+                        1,
+                        0.2
+                    ]
+                ],
+                "line-opacity": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "country",
+                        "dependency"
+                    ],
+                    0.35,
+                    [
+                        "region",
+                        "macroregion"
+                    ],
+                    0.45,
+                    [
+                        "county",
+                        "macrocounty"
+                    ],
+                    0.55,
+                    0.5
+                ],
+                "line-dasharray": [
+                    2,
+                    2
+                ]
+            },
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            }
+        },
+        {
+            "id": "building-fill",
+            "type": "fill",
+            "source": "buildings",
+            "source-layer": "building",
+            "minzoom": 14,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "geometry-type"
+                    ],
+                    "Polygon"
+                ],
+                [
+                    "!=",
+                    [
+                        "get",
+                        "has_parts"
+                    ],
+                    "true"
+                ]
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 16%, 89%)",
+                "fill-outline-color": "hsl(210, 15%, 86%)"
+            }
+        },
+        {
+            "id": "building-part-fill",
+            "type": "fill",
+            "source": "buildings",
+            "source-layer": "building_part",
+            "minzoom": 14,
+            "filter": [
+                "==",
+                [
+                    "geometry-type"
+                ],
+                "Polygon"
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 15%, 86%)",
+                "fill-outline-color": "hsl(210, 16%, 84%)"
+            }
+        },
+        {
+            "id": "rail-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "subtype"
+                ],
+                "rail"
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 68%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    0.2,
+                    12,
+                    0.5,
+                    16,
+                    2,
+                    20,
+                    4
+                ],
+                "line-dasharray": [
+                    2,
+                    2
+                ]
+            }
+        },
+        {
+            "id": "rail-ticks",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 14,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "subtype"
+                ],
+                "rail"
+            ],
+            "paint": {
+                "line-color": "hsl(0, 0%, 68%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    4,
+                    20,
+                    12
+                ],
+                "line-dasharray": [
+                    0.2,
+                    8
+                ]
+            }
+        },
+        {
+            "id": "water-line",
+            "type": "line",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 12,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "subtype"
+                ],
+                "water"
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(196, 56%, 76%)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.5
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    10,
+                    0.2,
+                    12,
+                    0.5,
+                    16,
+                    2,
+                    20,
+                    4
+                ]
+            }
+        },
+        {
+            "id": "water-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "subtype"
+                ],
+                "water"
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Italic",
+                    "Noto Sans Italic"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    10,
+                    16,
+                    12
+                ],
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": 500
+            },
+            "paint": {
+                "text-color": "hsl(198, 40%, 55%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.70)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-other-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 16,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "in",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "unclassified",
+                            "service",
+                            "unknown"
+                        ]
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    16,
+                    6,
+                    18,
+                    10
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-living-street-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 16,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "living_street"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    16,
+                    6,
+                    18,
+                    11
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-residential-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "residential"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    15,
+                    6,
+                    18,
+                    12
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-tertiary-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 14,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "tertiary"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14,
+                    6,
+                    15,
+                    8,
+                    18,
+                    12
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-secondary-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "secondary"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    6,
+                    15,
+                    8,
+                    18,
+                    13
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-primary-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "primary"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Medium",
+                    "Noto Sans Medium"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    6,
+                    15,
+                    9,
+                    18,
+                    14
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-trunk-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "trunk"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Medium",
+                    "Noto Sans Medium"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    7,
+                    15,
+                    10,
+                    18,
+                    15
+                ],
+                "text-letter-spacing": 0.15,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road-motorway-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "road"
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    "motorway"
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Medium",
+                    "Noto Sans Medium"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    8,
+                    15,
+                    11,
+                    18,
+                    16
+                ],
+                "text-letter-spacing": 0.15,
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    150,
+                    18,
+                    450,
+                    22,
+                    1500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(211, 23%, 45%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "rail-label",
+            "type": "symbol",
+            "source": "transportation",
+            "source-layer": "segment",
+            "minzoom": 13,
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "subtype"
+                ],
+                "rail"
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    8,
+                    18,
+                    12
+                ],
+                "text-max-angle": 30,
+                "symbol-placement": "line",
+                "symbol-spacing": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    200,
+                    18,
+                    500
+                ]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 54%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "division-county-label",
+            "type": "symbol",
+            "source": "divisions",
+            "source-layer": "division",
+            "maxzoom": 13,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "macrocounty",
+                            "county"
+                        ]
+                    ]
+                ],
+                [
+                    "<=",
+                    [
+                        "length",
+                        [
+                            "get",
+                            "@name"
+                        ]
+                    ],
+                    [
+                        "step",
+                        [
+                            "zoom"
+                        ],
+                        12,
+                        10,
+                        999
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "county",
+                        9.5,
+                        8
+                    ],
+                    10,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "county",
+                        11,
+                        9
+                    ],
+                    12,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "county",
+                        12,
+                        10
+                    ]
+                ],
+                "text-letter-spacing": 0.1,
+                "text-max-width": 7,
+                "text-line-height": 1.3,
+                "text-padding": 6,
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 60%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.70)",
+                "text-halo-width": 1.1
+            }
+        },
+        {
+            "id": "division-local-label",
+            "type": "symbol",
+            "source": "divisions",
+            "source-layer": "division",
+            "minzoom": 11,
+            "maxzoom": 17,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "localadmin",
+                            "borough",
+                            "macrohood",
+                            "neighborhood",
+                            "microhood"
+                        ]
+                    ]
+                ],
+                [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    [
+                        "in",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "borough",
+                                "localadmin"
+                            ]
+                        ]
+                    ],
+                    12,
+                    [
+                        "in",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "borough",
+                                "localadmin",
+                                "macrohood"
+                            ]
+                        ]
+                    ],
+                    14,
+                    [
+                        "in",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "literal",
+                            [
+                                "borough",
+                                "localadmin",
+                                "macrohood",
+                                "neighborhood"
+                            ]
+                        ]
+                    ],
+                    15,
+                    true
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "match",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "localadmin",
+                        "borough"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "Nunito Medium",
+                            "Noto Sans Medium"
+                        ]
+                    ],
+                    [
+                        "literal",
+                        [
+                            "Nunito Regular",
+                            "Noto Sans Regular"
+                        ]
+                    ]
+                ],
+                "text-transform": "uppercase",
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    11,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "localadmin",
+                            "borough",
+                            "macrohood"
+                        ],
+                        12,
+                        10
+                    ],
+                    13,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "localadmin",
+                            "borough",
+                            "macrohood"
+                        ],
+                        14,
+                        11.5
+                    ],
+                    15,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        [
+                            "localadmin",
+                            "borough",
+                            "macrohood"
+                        ],
+                        16,
+                        13
+                    ]
+                ],
+                "text-letter-spacing": 0.15,
+                "text-max-width": 7,
+                "text-line-height": 1.3,
+                "text-padding": 8,
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 46%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.80)",
+                "text-halo-width": 1.2
+            }
+        },
+        {
+            "id": "division-region-label",
+            "type": "symbol",
+            "source": "divisions",
+            "source-layer": "division",
+            "maxzoom": 10,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "region",
+                            "macroregion"
+                        ]
+                    ]
+                ],
+                [
+                    "<=",
+                    [
+                        "length",
+                        [
+                            "get",
+                            "@name"
+                        ]
+                    ],
+                    [
+                        "step",
+                        [
+                            "zoom"
+                        ],
+                        5,
+                        7,
+                        30,
+                        9,
+                        999
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Regular",
+                    "Noto Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    6,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "region",
+                        10,
+                        8
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "region",
+                        11.5,
+                        9.5
+                    ],
+                    10,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "region",
+                        13,
+                        11
+                    ]
+                ],
+                "text-letter-spacing": 0.15,
+                "text-max-width": 6,
+                "text-line-height": 1.3,
+                "text-padding": 6,
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 54%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.70)",
+                "text-halo-width": 1.1
+            }
+        },
+        {
+            "id": "division-locality-label",
+            "type": "symbol",
+            "source": "divisions",
+            "source-layer": "division",
+            "maxzoom": 16,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    "locality"
+                ],
+                [
+                    ">=",
+                    [
+                        "to-number",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        0
+                    ],
+                    [
+                        "step",
+                        [
+                            "zoom"
+                        ],
+                        0,
+                        12,
+                        25,
+                        14,
+                        70
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "case",
+                    [
+                        ">=",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        70
+                    ],
+                    [
+                        "literal",
+                        [
+                            "Nunito Bold",
+                            "Noto Sans Bold"
+                        ]
+                    ],
+                    [
+                        "literal",
+                        [
+                            "Nunito Medium",
+                            "Noto Sans Medium"
+                        ]
+                    ]
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    10,
+                    [
+                        "case",
+                        [
+                            ">=",
+                            [
+                                "get",
+                                "@prominence"
+                            ],
+                            70
+                        ],
+                        18,
+                        11
+                    ],
+                    12,
+                    [
+                        "case",
+                        [
+                            ">=",
+                            [
+                                "get",
+                                "@prominence"
+                            ],
+                            50
+                        ],
+                        20,
+                        12.5
+                    ],
+                    14,
+                    [
+                        "case",
+                        [
+                            ">=",
+                            [
+                                "get",
+                                "@prominence"
+                            ],
+                            70
+                        ],
+                        24,
+                        14
+                    ]
+                ],
+                "text-letter-spacing": 0,
+                "text-max-width": 6,
+                "text-padding": 6,
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": [
+                    "case",
+                    [
+                        ">=",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        70
+                    ],
+                    "hsl(0, 0%, 13%)",
+                    [
+                        ">=",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        40
+                    ],
+                    "hsl(0, 0%, 24%)",
+                    "hsl(0, 0%, 30%)"
+                ],
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": [
+                    "case",
+                    [
+                        ">=",
+                        [
+                            "get",
+                            "@prominence"
+                        ],
+                        70
+                    ],
+                    1.8,
+                    1.2
+                ]
+            }
+        },
+        {
+            "id": "division-country-label",
+            "type": "symbol",
+            "source": "divisions",
+            "source-layer": "division",
+            "maxzoom": 9,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    [
+                        "get",
+                        "subtype"
+                    ],
+                    [
+                        "literal",
+                        [
+                            "country",
+                            "dependency"
+                        ]
+                    ]
+                ],
+                [
+                    "<=",
+                    [
+                        "length",
+                        [
+                            "get",
+                            "@name"
+                        ]
+                    ],
+                    [
+                        "step",
+                        [
+                            "zoom"
+                        ],
+                        15,
+                        3,
+                        25,
+                        5,
+                        50,
+                        7,
+                        999
+                    ]
+                ]
+            ],
+            "layout": {
+                "text-field": [
+                    "get",
+                    "@name"
+                ],
+                "text-font": [
+                    "Nunito Bold",
+                    "Noto Sans Bold"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    2,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "country",
+                        11,
+                        9
+                    ],
+                    4,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "country",
+                        14,
+                        11
+                    ],
+                    6,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "country",
+                        17,
+                        13
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "subtype"
+                        ],
+                        "country",
+                        20,
+                        16
+                    ]
+                ],
+                "text-letter-spacing": 0,
+                "text-max-width": 7,
+                "text-line-height": 1.15,
+                "text-padding": 4,
+                "text-allow-overlap": false
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 13%)",
+                "text-halo-color": "hsla(0, 0%, 100%, 0.85)",
+                "text-halo-width": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    2,
+                    1.2,
+                    6,
+                    1.6,
+                    8,
+                    2
+                ]
+            }
+        }
+    ]
+}

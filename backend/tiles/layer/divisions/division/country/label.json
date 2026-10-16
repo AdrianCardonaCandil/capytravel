@@ -1,0 +1,97 @@
+{
+    "id": "division-country-label",
+    "type": "symbol",
+    "source": "divisions",
+    "source-layer": "division",
+    "maxzoom": 9,
+    "filter": [
+        "all",
+        [
+            "in",
+            ["get", "subtype"],
+            [
+                "literal",
+                ["country", "dependency"]
+            ]
+        ],
+        [
+            "<=",
+            [
+                "length",
+                ["get", "@name"]
+            ],
+            [
+                "step",
+                ["zoom"],
+                15,
+                3,
+                25,
+                5,
+                50,
+                7,
+                999
+            ]
+        ]
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": ["Nunito Bold", "Noto Sans Bold"],
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            2,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                11,
+                9
+            ],
+            4,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                14,
+                11
+            ],
+            6,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                17,
+                13
+            ],
+            8,
+            [
+                "match",
+                ["get", "subtype"],
+                "country",
+                20,
+                16
+            ]
+        ],
+        "text-letter-spacing": 0,
+        "text-max-width": 7,
+        "text-line-height": 1.15,
+        "text-padding": 4,
+        "text-allow-overlap": false
+    },
+    "paint": {
+        "text-color": "$ink.900",
+        "text-halo-color": "$white.200",
+        "text-halo-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            2,
+            1.2,
+            6,
+            1.6,
+            8,
+            2
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "id": "land-use-developed-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "developed"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["industrial", "warehouse"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "$urban.100",
+        "fill-outline-color": "$urban.200"
+    }
+}

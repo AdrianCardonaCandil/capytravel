@@ -1,0 +1,29 @@
+{
+    "id": "infrastructure-quay-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "quay"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "quay"
+        ]
+    ],
+    "paint": {
+        "fill-color": "$urban.200",
+        "fill-outline-color": "$urban.500"
+    }
+}

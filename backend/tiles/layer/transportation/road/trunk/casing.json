@@ -1,0 +1,69 @@
+{
+    "id": "road-trunk-casing",
+    "type": "line",
+    "source": "transportation",
+    "source-layer": "segment",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["get", "subtype"],
+            "road"
+        ],
+        [
+            "==",
+            ["get", "class"],
+            "trunk"
+        ]
+    ],
+    "layout": {
+        "line-cap": [
+            "step",
+            ["zoom"],
+            "butt",
+            13,
+            "round"
+        ],
+        "line-join": [
+            "step",
+            ["zoom"],
+            "miter",
+            13,
+            "round"
+        ]
+    },
+    "paint": {
+        "line-color": [
+            "step",
+            ["zoom"],
+            "$transparent",
+            8,
+            "$urban.500"
+        ],
+        "line-width": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            14,
+            1,
+            20,
+            2
+        ],
+        "line-gap-width": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            5,
+            0.4,
+            8,
+            0.8,
+            12,
+            2.5,
+            16,
+            7,
+            20,
+            14
+        ]
+    }
+}

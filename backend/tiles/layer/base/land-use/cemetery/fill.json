@@ -1,0 +1,32 @@
+{
+    "id": "land-use-cemetery-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "cemetery"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["cemetery", "graveyard"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "$vegetation.200",
+        "fill-outline-color": "$vegetation.300"
+    }
+}

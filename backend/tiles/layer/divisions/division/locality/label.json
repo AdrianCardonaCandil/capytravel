@@ -1,0 +1,118 @@
+{
+    "id": "division-locality-label",
+    "type": "symbol",
+    "source": "divisions",
+    "source-layer": "division",
+    "maxzoom": 16,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["get", "subtype"],
+            "locality"
+        ],
+        [
+            ">=",
+            ["to-number", ["get", "@prominence"], 0],
+            [
+                "step",
+                ["zoom"],
+                0,
+                12,
+                25,
+                14,
+                70
+            ]
+        ]
+    ],
+    "layout": {
+        "text-field": ["get", "@name"],
+        "text-font": [
+            "case",
+            [
+                ">=",
+                ["get", "@prominence"],
+                70
+            ],
+            [
+                "literal",
+                ["Nunito Bold", "Noto Sans Bold"]
+            ],
+            [
+                "literal",
+                ["Nunito Medium", "Noto Sans Medium"]
+            ]
+        ],
+        "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            [
+                "case",
+                [
+                    ">=",
+                    ["get", "@prominence"],
+                    70
+                ],
+                18,
+                11
+            ],
+            12,
+            [
+                "case",
+                [
+                    ">=",
+                    ["get", "@prominence"],
+                    50
+                ],
+                20,
+                12.5
+            ],
+            14,
+            [
+                "case",
+                [
+                    ">=",
+                    ["get", "@prominence"],
+                    70
+                ],
+                24,
+                14
+            ]
+        ],
+        "text-letter-spacing": 0,
+        "text-max-width": 6,
+        "text-padding": 6,
+        "text-allow-overlap": false
+    },
+    "paint": {
+        "text-color": [
+            "case",
+            [
+                ">=",
+                ["get", "@prominence"],
+                70
+            ],
+            "$ink.900",
+            [
+                ">=",
+                ["get", "@prominence"],
+                40
+            ],
+            "$ink.800",
+            "$ink.700"
+        ],
+        "text-halo-color": "$white.200",
+        "text-halo-width": [
+            "case",
+            [
+                ">=",
+                ["get", "@prominence"],
+                70
+            ],
+            1.8,
+            1.2
+        ]
+    }
+}

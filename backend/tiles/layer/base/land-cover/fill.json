@@ -1,0 +1,76 @@
+{
+    "id": "land-cover-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_cover",
+    "maxzoom": 13,
+    "filter": [
+        "==",
+        ["geometry-type"],
+        "Polygon"
+    ],
+    "layout": {
+        "fill-sort-key": [
+            "match",
+            ["get", "subtype"],
+            "forest",
+            1,
+            "barren",
+            2,
+            "shrub",
+            3,
+            "grass",
+            4,
+            "crop",
+            5,
+            "wetland",
+            6,
+            "mangrove",
+            7,
+            "moss",
+            8,
+            "snow",
+            9,
+            0
+        ]
+    },
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "subtype"],
+            "barren",
+            "$cream.200",
+            "crop",
+            "$vegetation.100",
+            "forest",
+            "$vegetation.400",
+            "grass",
+            "$vegetation.300",
+            "mangrove",
+            "$vegetation.400",
+            "moss",
+            "$vegetation.500",
+            "shrub",
+            "$vegetation.200",
+            "snow",
+            "$ice.100",
+            "wetland",
+            "$vegetation.300",
+            "$transparent"
+        ],
+        "fill-opacity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            0,
+            1,
+            6,
+            1,
+            11,
+            0.2,
+            13,
+            0
+        ],
+        "fill-outline-color": "$transparent"
+    }
+}

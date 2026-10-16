@@ -1,0 +1,46 @@
+{
+    "id": "infrastructure-airport-line",
+    "type": "line",
+    "source": "base",
+    "source-layer": "infrastructure",
+    "minzoom": 13,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "LineString"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "airport"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["runway", "taxiway"]
+            ]
+        ]
+    ],
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+    },
+    "paint": {
+        "line-color": "$ink.400",
+        "line-width": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            12,
+            0.5,
+            16,
+            2,
+            20,
+            4
+        ]
+    }
+}

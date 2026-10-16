@@ -1,0 +1,32 @@
+{
+    "id": "land-use-residential-fill",
+    "type": "fill",
+    "source": "base",
+    "source-layer": "land_use",
+    "minzoom": 12,
+    "filter": [
+        "all",
+        [
+            "==",
+            ["geometry-type"],
+            "Polygon"
+        ],
+        [
+            "==",
+            ["get", "subtype"],
+            "residential"
+        ],
+        [
+            "in",
+            ["get", "class"],
+            [
+                "literal",
+                ["residential"]
+            ]
+        ]
+    ],
+    "paint": {
+        "fill-color": "$urban.100",
+        "fill-outline-color": "$urban.200"
+    }
+}
