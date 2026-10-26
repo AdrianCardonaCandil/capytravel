@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,7 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.example.capytravel.R
 
 sealed class NavigationBarItem(val icon: Int, val label: Int) {
@@ -39,7 +43,12 @@ sealed class NavigationBarItem(val icon: Int, val label: Int) {
 
 @Composable
 fun NavigationBar(modifier: Modifier = Modifier) {
-    Box(modifier) {
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(R.dimen.padding_extra_small)
+        ),
+        modifier = modifier
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()

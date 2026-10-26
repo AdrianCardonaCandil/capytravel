@@ -19,14 +19,10 @@ import org.maplibre.compose.map.MaplibreMap
 fun CapyTravelApp(modifier: Modifier = Modifier) {
     Box(modifier = modifier) {
         MaplibreMap()
-        val navigationBarShape = MaterialTheme.shapes.medium
         NavigationBar(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(dimensionResource(R.dimen.padding_large))
-                .shadow(dimensionResource(R.dimen.padding_small), navigationBarShape)
-                .background(Color.White)
-                .clip(navigationBarShape)
         )
     }
 }
