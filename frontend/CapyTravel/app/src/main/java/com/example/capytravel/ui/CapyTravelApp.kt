@@ -1,23 +1,19 @@
 package com.example.capytravel.ui
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
-import com.example.capytravel.R
-import com.example.capytravel.ui.navigation.NavigationBar
+import com.example.capytravel.navigation.createTabs
 import org.maplibre.compose.map.MaplibreMap
 
 @Composable
 fun CapyTravelApp(modifier: Modifier = Modifier) {
-    Box(modifier = modifier) {
+    Box(modifier) {
         MaplibreMap()
-        NavigationBar(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(dimensionResource(R.dimen.padding_large))
-        )
     }
 }

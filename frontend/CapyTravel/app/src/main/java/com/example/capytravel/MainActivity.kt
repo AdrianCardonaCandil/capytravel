@@ -5,9 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.example.capytravel.navigation.createTabs
 import com.example.capytravel.ui.CapyTravelApp
 import com.example.capytravel.ui.theme.CapyTravelTheme
 
@@ -16,12 +21,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            var currentTab by rememberSaveable { mutableIntStateOf(0) }
             CapyTravelTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
+                NavigationSuiteScaffold(
+                    navigationSuiteItems = {
+                        createTabs(
+                            currentTab,
+                            { currentTab = it })
+                    }
+                ) {
                     CapyTravelApp(
-                        modifier = Modifier.padding(innerPadding).fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxSize().safeDrawingPadding()
                     )
                 }
             }
