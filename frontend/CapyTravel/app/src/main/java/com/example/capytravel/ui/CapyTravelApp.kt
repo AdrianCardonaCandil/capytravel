@@ -1,19 +1,21 @@
 package com.example.capytravel.ui
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.example.capytravel.navigation.createTabs
-import org.maplibre.compose.map.MaplibreMap
+import androidx.window.core.layout.WindowSizeClass
+import com.example.capytravel.ui.overview.ContentScaffold
 
 @Composable
-fun CapyTravelApp(modifier: Modifier = Modifier) {
-    Box(modifier) {
-        MaplibreMap()
-    }
+fun CapyTravelApp(
+    currentTab: Int,
+    onCloseContentTab: () -> Unit,
+    modifier: Modifier = Modifier,
+    windowSize: WindowSizeClass = currentWindowAdaptiveInfoV2().windowSizeClass,
+) {
+    ContentScaffold(
+        currentTab = currentTab,
+        onCloseContentTab = onCloseContentTab,
+        modifier = modifier
+    )
 }

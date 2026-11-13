@@ -10,15 +10,15 @@ import com.example.capytravel.R
 enum class NavigationTab(val icon: Int, val label: Int) {
     Search (
         icon = R.drawable.search_icon,
-        label = R.string.side_search
+        label = R.string.search_tab
     ),
     Travel (
         icon = R.drawable.travel_icon,
-        label = R.string.side_travel
+        label = R.string.travel_tab
     ),
     Account (
         icon = R.drawable.account_icon,
-        label = R.string.side_account
+        label = R.string.account_tab
     )
 }
 

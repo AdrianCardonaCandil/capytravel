@@ -21,21 +21,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            var currentTab by rememberSaveable { mutableIntStateOf(0) }
+            var currentTab by rememberSaveable { mutableIntStateOf(-1) }
+            val onTabSelected: (Int) -> Unit = { currentTab = it }
             CapyTravelTheme {
                 NavigationSuiteScaffold(
                     navigationSuiteItems = {
-                        createTabs(
-                            currentTab,
-                            { currentTab = it })
+                        createTabs(currentTab, onTabSelected)
                     }
                 ) {
                     CapyTravelApp(
-                        modifier = Modifier
-                            .fillMaxSize().safeDrawingPadding()
+                        currentTab,
+                        onCloseContentTab = { currentTab = -1 },
+                        modifier = Modifier.fillMaxSize().safeDrawingPadding()
                     )
                 }
             }
         }
     }
-}
+}g

@@ -1,6 +1,51 @@
 <resources>
+    <!-- Navigation Tabs -->
     <string name="app_name">CapyTravel</string>
-    <string name="side_search">Search</string>
-    <string name="side_travel">Travel</string>
-    <string name="side_account">Account</string>
+    <string name="search_tab">Search</string>
+    <string name="travel_tab">Travel</string>
+    <string name="account_tab">Account</string>
+
+    <!-- Search -->
+    <string name="search_bar_title">Search</string>
+    <string name="search_bar_description">Search and filter places</string>
+
+    <string name="places_tab">Places</string>
+    <string name="localities_tab">Localities</string>
+    <string name="addresses_tab">Addresses</string>
+
+    <string name="services_and_business">Services and Business</string>
+    <string name="shopping">Shopping</string>
+    <string name="food_and_drink">Food and Drink</string>
+    <string name="health_care">Health Care</string>
+    <string name="lifestyle_services">Lifestyle Services</string>
+    <string name="travel_and_transportation">Travel and Transportation</string>
+    <string name="education">Education</string>
+    <string name="cultural_and_historic">Cultural and Historic</string>
+    <string name="sports_and_recreation">Sports and Recreation</string>
+    <string name="lodging">Lodging</string>
+    <string name="community_and_government">Community and Government</string>
+    <string name="arts_and_entertainment">Arts and Entertainment</string>
+    <string name="geographical_entities">Geographical Entities</string>
+
+    <!-- Travel -->
+    <string name="week_calendar_title">Travel</string>
+    <string name="week_calendar_description">Select a trip or create a new one to start planning.</string>
+    <string name="mock_header_week_selector">OCT 12 – 18</string>
+    <string name="calendar">Calendar</string>
+    <string name="day_name">Day 2</string>
+    <string name="day_description">Tuesday 2, November</string>
+    <string name="weather">Weather</string>
+    <string name="resume_duration">Duration: 6 h, 14 min</string>
+    <string name="resume_distance">Distance: 20.8 km</string>
+    <string name="resume_intensity">Quiet Day</string>
+    <string name="travel_walk">Walk</string>
+    <string name="travel_time">11 min</string>
+    <string name="travel_distance">900 mt.</string>
+
+    <!-- Common -->
+    <string name="close">Close</string>
+    <string name="back">Back</string>
+    <string name="forward">Forward</string>
+    <string name="more">More</string>
+    <string name="down">Down</string>
 </resources>
